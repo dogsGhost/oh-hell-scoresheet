@@ -24,7 +24,16 @@
 
     function Hand(bid) {
       this.bid = bid;
+      this.pointsEarned = 0;
+      this.correctBid = false;
     }
+
+    Hand.prototype.scoreHand = function(guess) {
+      if (guess === 'correct') {
+        this.correctBid = true;
+        this.pointsEarned = this.bid * Ohs.settings.trickValue + Ohs.settings.correctBidValue;
+      }
+    };
 
     return Hand;
 
@@ -45,7 +54,6 @@
         String.prototype.trim = function() {
           return this.replace(/^\s+|\s+$/g, '');
         };
-        return true;
       }
     }
   };
@@ -60,9 +68,9 @@
   * @fileOverview Handles all functionality for executing the Oh Hell Scoresheet
   * web application that allows the user to track the scores of everyone during a
   * game of Oh Hell.
-  * Dependencies: jQuery, Handlebars
+  * Dependencies: jQuery, jQueryUI, Handlebars
   * @author David Wilhelm
-  * @version 2.3.9
+  * @version 2.3.10
   */
 
 
@@ -70,7 +78,8 @@
     init: function() {
       this.cacheVariables();
       this.bindNewGame();
-      return Utils.trimCheck();
+      Utils.trimCheck();
+      return $('button').button();
     },
     cacheVariables: function() {
       this.$namesFormTemplate = Handlebars.compile($('#namesFormTemplate').html());
@@ -83,8 +92,6 @@
       this.gameStarted = false;
       this.game = [];
       this.settings = {};
-      this.$newGameBtn.button();
-      return true;
     },
     bindNewGame: function() {
       this.$newGameBtn.on('click', this.startNewGame);
@@ -120,7 +127,7 @@
         }).call(this)
       };
       this.$container.append(this.$namesFormTemplate(players));
-      return $('#nameForm').on('submit', this.setPlayerNames).slideDown().removeClass('hide');
+      return $('#nameForm').on('submit', this.setPlayerNames).find('button').button().end().slideDown().removeClass('hide');
     },
     setPlayerNames: function(e) {
       var index, name, names, _i, _len;
@@ -197,7 +204,7 @@
       })();
       data.numCards += data.numCards > 1 ? ' cards' : ' card';
       this.$container.append(this.$biddingFormTemplate(data));
-      return $('#biddingForm').on('submit', this.setPlayerBids).slideDown().removeClass('hide').next().find('button').on('click', this.renderCorrectBidsForm);
+      return $('#biddingForm').on('submit', this.setPlayerBids).find('button').button().end().slideDown().removeClass('hide').next().find('button').button().on('click', this.renderCorrectBidsForm);
     },
     setPlayerBids: function(e) {
       var bid, bids, player, _i, _j, _len, _len1, _ref;
@@ -214,7 +221,7 @@
         }
       }
       return $(this).slideUp(300, function() {
-        return $(this).next().slideDown().removeClass('hide').end().remove();
+        return $(this).next().find('button').button().end().slideDown().removeClass('hide').end().remove();
       });
     },
     renderCorrectBidsForm: function() {
@@ -237,21 +244,34 @@
       $(this).parent().slideUp(400, function() {
         return $(this).remove();
       });
-      return $('#correctBidsForm').on('submit', Ohs.calcBids).slideDown().removeClass('hide');
+      return $('#correctBidsForm').on('submit', Ohs.calcBids).find('button').button().end().slideDown().removeClass('hide');
     },
-    calcBids: function() {
-      var results;
-      results = $(this).serializeArray();
-      return true;
-    },
-    renderScoreBoard: function(e) {
-      var scores;
+    calcBids: function(e) {
+      var hand, player, result, results, _i, _j, _len, _len1, _ref;
       e.preventDefault();
+      results = $(this).serializeArray();
+      hand = Ohs.game[0].hands.length - 1;
+      _ref = Ohs.game;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        player = _ref[_i];
+        for (_j = 0, _len1 = results.length; _j < _len1; _j++) {
+          result = results[_j];
+          if (result.name === player.name) {
+            player.hands[hand].scoreHand(result.value);
+            player.totalScore += player.hands[hand].pointsEarned;
+          }
+        }
+      }
+      return Ohs.renderScoreBoard();
+    },
+    renderScoreBoard: function() {
+      var scores;
       scores = {
-        players: Ohs.game
+        players: this.game
       };
-      return $(this).slideUp(600, function() {
-        return $(this).next().slideDown().removeClass('hide').end().remove();
+      this.$container.append(this.$scoreBoardTemplate(scores));
+      return $('#correctBidsForm').slideUp(600, function() {
+        return $(this).next().slideDown().removeClass('hide').find('button').button().on('click', this.renderBiddingForm).end().end().remove();
       });
     }
   };

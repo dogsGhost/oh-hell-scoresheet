@@ -2,9 +2,9 @@
 * @fileOverview Handles all functionality for executing the Oh Hell Scoresheet
 * web application that allows the user to track the scores of everyone during a
 * game of Oh Hell.
-* Dependencies: jQuery, Handlebars
+* Dependencies: jQuery, jQueryUI, Handlebars
 * @author David Wilhelm
-* @version 2.3.9
+* @version 2.3.10
 ###
 
 Ohs =
@@ -13,11 +13,14 @@ Ohs =
     @bindNewGame()
     # Add trim method for IE8 support.
     Utils.trimCheck()
+    $('button').button()
+    #$('#radios').buttonset()
 
   cacheVariables: ->
     @$namesFormTemplate = Handlebars.compile $('#namesFormTemplate').html()
     @$biddingFormTemplate = Handlebars.compile $('#biddingFormTemplate').html()
-    @$correctBidsFormTemplate = Handlebars.compile $('#correctBidsFormTemplate').html()
+    @$correctBidsFormTemplate =
+      Handlebars.compile $('#correctBidsFormTemplate').html()
     @$scoreBoardTemplate = Handlebars.compile $('#scoreBoardTemplate').html()
     @$newGameBtn = $ '#newGameBtn'
     @$container = $ '#container'
@@ -26,9 +29,7 @@ Ohs =
     @gameStarted = false
     @game = []
     @settings = {}
-
-    @$newGameBtn.button()
-    true
+    return
 
   bindNewGame: ->
     @$newGameBtn.on 'click', @startNewGame
@@ -68,6 +69,9 @@ Ohs =
     @$container.append @$namesFormTemplate(players)
     $('#nameForm')    
       .on('submit', @setPlayerNames)
+      .find('button')
+        .button()
+        .end()
       .slideDown()
       .removeClass('hide')
 
@@ -128,10 +132,14 @@ Ohs =
     @$container.append @$biddingFormTemplate(data)
     $('#biddingForm')
       .on('submit', @setPlayerBids)
+      .find('button')
+        .button()
+        .end()
       .slideDown()
       .removeClass('hide')
       .next()
         .find('button')
+          .button()
           .on 'click', @renderCorrectBidsForm
 
   setPlayerBids: (e) ->
@@ -147,6 +155,9 @@ Ohs =
     $(@).slideUp 300, ->
       $(@)
         .next()
+          .find('button')
+            .button()
+            .end()
           .slideDown()
           .removeClass('hide')
           .end()
@@ -168,28 +179,49 @@ Ohs =
     # Change the view.
     Ohs.$container.append Ohs.$correctBidsFormTemplate(data)
     $(@).parent().slideUp 400, -> $(@).remove()
+    
     $('#correctBidsForm')
       .on('submit', Ohs.calcBids)
+      .find('button')
+        .button()
+        .end()
       .slideDown()
       .removeClass 'hide'
 
-  calcBids: ->
-    results = $(@).serializeArray()
-    true
-    
-
-  renderScoreBoard: (e) ->
+  calcBids: (e) ->
     e.preventDefault()
-    scores =
-      players: Ohs.game
 
-    # Ohs.$container.append Ohs.$scoreBoardTemplate(scores)
+    # Update results of hand just played.
+    results = $(@).serializeArray()
+    hand =  Ohs.game[0].hands.length - 1
+    for player in Ohs.game
+      for result in results
+        if result.name is player.name
+          player.hands[hand].scoreHand(result.value)
+          # Update player's overall score.
+          player.totalScore += player.hands[hand].pointsEarned
     
-    $(@).slideUp 600, ->
+    Ohs.renderScoreBoard()
+
+  renderScoreBoard: ->
+    scores =
+      players: @game
+
+    # Loop through all the hands and add allthe scores to the total hand
+    
+
+    @$container.append @$scoreBoardTemplate(scores)
+    #
+
+    $('#correctBidsForm').slideUp 600, ->
       $(@)
         .next()
           .slideDown()
           .removeClass('hide')
+          .find('button')
+            .button()
+            .on('click', @renderBiddingForm)
+            .end()
           .end()
         .remove()
 

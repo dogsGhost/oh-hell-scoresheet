@@ -7,4 +7,4 @@ Utils =
     if not String.prototype.trim
       String.prototype.trim = ->
         @replace /^\s+|\s+$/g, ''
-      true
+    return
