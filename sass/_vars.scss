@@ -1,0 +1,19 @@
+
+// Colors
+$skyblue: rgb(114, 214, 214);
+$orange: rgb(202, 87, 33);
+$offwhite: #ecf0f1;
+
+
+
+// Typography
+
+$base-font-size: 1em;
+
+$base-line-height: 1.5;
+
+$max-width: 36em;
+
+@mixin padding($vert, $horz) {
+  padding: $vert percentage($horz/($max-width));
+}

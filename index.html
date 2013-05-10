@@ -1,94 +1,144 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Oh Hell Scoresheet - paperless score sheet for the popular card game</title>
-<meta name="viewport" content="width=device-width">
-<link href="css/style-min.css" rel="stylesheet">
-<script src="js/modernizr.min.js"></script>
+  <meta charset="utf-8">
+  <title>Oh Hell! scoresheet - paperless score sheet for the popular card game</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1">
+  <link href="css/style.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet'>
+  <script src="js/modernizr.min.js"></script>
 </head>
 <body>
-<div class="wrapper">
-	<header class="header section show">
-		<h1 class="heading">Oh Hell Scoresheet</h1>
-		<form class="section pop-out" id="newGame">
-			<input type="submit" class="btn start-btn" value="Start a new game">
-		</form>
-		<p><a href="http://www.pagat.com/exact/ohhell.html" target="_blank">read the rules</a></p>
-		<p class="alert"><small><strong><em>Caution!</em></strong> Do not close this window or your scoring will be lost!</small></p>
-	</header>
-	<form id="numberPlayers" class="section hidden">
-		<label for="numPlayers">How many players are there?
-			<select id="numPlayers" name="numPlayers">
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-			</select>
-		</label>
-		<div>
-		<input type="submit" class="btn next" value="Next">
-		</div>
-	</form>
-	<form id="namesForm" class="section hidden">
-		<ul class="form-list">
-		</ul>
-		<input type="submit" class="btn next" value="Next">
-	</form>
-	<form id="scoringForm" class="section hidden">
-		<ul class="form-list">
-			<li>
-				<label for="handSequence">What hand sequence would you like to use?</label>
-				<select name="handSequence" id="handSequence">
-					<option value="0">1 => max number => 1 </option>
-					<option value="1">max number => 1 => max number </option>
-					<option value="2">1 => max number </option>
-					<option value="3">max number => 1 </option>
-				</select>
-			</li>
-			<li>
-				<label for="trickValue">How many points is a trick worth? (default 1)</label>
-				<input type="text" size="8" class="field" name="trickValue" id="trickValue" placeholder="1">
-			</li>
-			<li>
-				<label for="correctBidValue">How many points is a correct bid worth? (default 10)</label>
-				<input type="text" size="8" class="field" name="correctBidValue" id="correctBidValue" placeholder="10">
-			</li>
-		</ul>
-		<input type="submit" class="btn next" value="Next">
-	</form>
-	<div id="scoreBoard" class="section hidden">
-		<p class="winner"></p>
-		<table class="table">
-			<thead>
-				<tr> </tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
-		<input type="button" id="nextHand" class="btn" value="Play Next Hand">
-	</div>
-</div> <!-- end #wrapper -->
-<div class="overlay hidden">
-	<form id="playerBidList" class="modal section">
-		<h2></h2>
-		<ul class="form-list">
-		</ul>
-		<input type="submit" value="Submit" class="btn">
-	</form>
-	<div class="modal section hidden">
-		<h2>Play the hand!</h2>
-		<input type="button" id="handFinished" class="btn" value="Done!">
-	</div>
-	<form id="correctBidForm" class="modal section hidden">
-		<h2>How'd you do?</h2>
-		<ul class="form-list">
-		</ul>
-		<input type="submit" value="View Scores" class="btn">
-	</form>
-</div>
-<script src="js/scripts.js"></script>
+  <noscript>
+  	<p class="browser-alert">You must enable javascript to use this application.</p>
+  </noscript>
+  <div class="page-wrap">
+  	<header class="page-header" role="banner">
+  		<h1>Oh Hell! Scoresheet</h1>
+  		<a href="http://www.pagat.com/exact/ohhell.html" target="_blank" title="external link">read the rules</a>
+      <p><em>Caution!</em> Do not close this window or your scoring will be lost!</p>
+      <button id="newGameBtn" class="btn btn--new-game">New Game</button>
+    </header>
+    <section id="container" class="container" role="main">
+      
+      <div id="numPlayersSection" class="view hide">
+        <div>
+          <label for="numPlayers">How many players are there?</label>
+          <select id="numPlayers" name="numPlayers">
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+          </select>
+        </div>
+        <button class="btn next">Next</button>
+      </div><!-- /numPlayersSection -->
+
+      <form id="scoringForm" class="view hide" role="form">
+        <ul class="form-list">
+          <li>
+            <p>Which hand sequence would you like to use?</p>
+            <input type="radio" name="handSequence" id="radio1" value="0" checked>
+            <label for="radio1">Start at 1 card each.</label>
+            <input type="radio" name="handSequence" id="radio2" value="1">
+            <label for="radio2">Start at max number of cards.</label>
+          </li>
+          <li>
+            <label for="trickValue">How many points is a trick worth? (default 1)</label>
+            <input type="text" size="8" class="field" name="trickValue" id="trickValue" placeholder="1">
+          </li>
+          <li>
+            <label for="correctBidValue">How many points is a correct bid worth? (default 10)</label>
+            <input type="text" size="8" class="field" name="correctBidValue" id="correctBidValue" placeholder="5">
+          </li>
+        </ul>
+        <input type="submit" class="btn next" value="Next">
+      </form><!-- /scoringForm -->
+      
+    </section><!-- /container -->
+
+    <footer class="page-footer" role="contentinfo">
+      <small>2012 | <a href="http://davwilh.com/">David made this</a></small>
+    </footer>
+  </div><!-- /page-wrap -->
+
+  <script type="text/x-handlebars-template" id="namesFormTemplate">
+    <form id="nameForm" class="view hide" role="form">
+      <ul class="form-list">
+        {{#each count}}
+        <li>
+          <label for="name{{this}}">Player {{this}}&apos;s name:</label>
+          <input type="text" id="name{{this}}" size="16" name="name{{this}}" placeholder="Player {{this}}">
+        </li>
+        {{/each}} 
+      </ul>
+      <input type="submit" value="Next" class="btn next">
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="biddingFormTemplate">
+    <form id="biddingForm" class="view hide" role="form">
+      <h2>Hand {{handNum}} ({{numCards}})</h2>
+      <ul class="form-list">
+        {{#each players}}
+        <li>
+          <label for="player{{@index}}">How many tricks does {{name}} bid?</label>
+          <select id="player{{@index}}" name="{{name}}">
+            {{#each ../count}}
+            <option>{{this}}</option>
+            {{/each}}
+          </select>
+        </li>
+        {{/each}}
+      </ul>
+      <input type="submit" value="Submit Bids" class="btn">
+    </form>
+    <div class="view hide">
+    <h2>Play the hand!</h2>
+    <button class="btn">Done!</button>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars-template" id="correctBidsFormTemplate">
+    <form id="correctBidsForm" class="view hide" role="form">
+      <h2>How&apos;d you do?</h2>
+      <ul class="form-list">
+        {{#each players}}
+        <li>Did {{name}} win {{bid}}?
+        <input type="radio" name="{{name}}" id="radio-yes{{@index}}" value="yes"><label for="radio-yes{{@index}}">Yes</label>
+        <input type="radio" name="{{name}}" id="radio-no{{@index}}" value="no"><label for="radio-no{{@index}}">No</label>
+        </li>
+        {{/each}}
+      </ul>
+      <input type="submit" value="View Score" class="btn">
+    </form>
+  </script>
+
+  <script type="text/x-handlebars-template" id="scoreBoardTemplate">
+    <div class="view hide">
+      <table>
+        <thead>
+          <tr>
+            <td></td>
+            {{#each players}}
+            <th>{{name}}</th>
+            {{/each}}
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+      <button class="btn next">Play Next Hand</button>
+    </div>
+  </script>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/handlebars.js"></script>
+  <script src="js/ohell.js"></script>
+  <script>
+  </script>
 </body>
 </html>

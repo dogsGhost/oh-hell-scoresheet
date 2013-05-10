@@ -1,0 +1,108 @@
+
+@import 'vars.scss';
+@import 'normalize.scss';
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: #{$base-font-size}/#{$base-line-height} 'Open Sans', Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: $skyblue; 
+  background-image: linear-gradient(#222 1px, transparent 1px);
+  background-size: 100% 1.5em;
+}
+
+.page-wrap {
+  margin: 1.5em auto 0;
+  max-width: $max-width;
+  background: rgba(#fff, .9);
+  border-radius: $base-font-size/3;
+}
+
+.page-header {
+  @include padding(.75em, 3.5em);
+  border-bottom: 2px solid $orange;
+  padding-bottom: 1em;
+}
+
+.page-footer {
+  @include padding(1.5em, 3.5em);
+  border-top: 2px solid $orange;
+}
+
+h1, h2, h3 {
+  margin: 0 0 1rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.5;
+  //background: red;
+}
+
+p {
+  margin: 0 0 1.5em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 1.5em 0 0;
+}
+
+li:first-child {
+  margin-top: 0;
+}
+
+.view {
+  @include padding(1.5em, 3.5em);
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+a {
+  color: $orange;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:visited {
+    color: desaturate($orange, 15%);
+  }
+
+  &:hover {
+    text-decoration: underline;
+    color: lighten($orange, 5%);
+  }
+
+  &:active {
+    color: darken($orange, 5%);
+  }
+
+}
+strong {
+  font-weight: 600;
+}
+
+.next {
+  margin-top: 1.5em;
+}
