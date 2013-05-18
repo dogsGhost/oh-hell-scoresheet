@@ -1,22 +1,7 @@
 
 @import 'vars.scss';
 @import 'normalize.scss';
-
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font: #{$base-font-size}/#{$base-line-height} 'Open Sans', Helvetica, Arial, sans-serif;
-  color: #222;
-  background-color: $skyblue; 
-  //background-image: linear-gradient($offwhite 1px, transparent 1px);
-  background-size: 100% 1.5em;
-  background-position: 0 .75em;
-}
+@import 'base.scss';
 
 .page-wrap {
   margin: 1.5em auto 0;
@@ -37,67 +22,39 @@ body {
   border-top: 1px dashed $orange;
 }
 
-h1, h2, h3 {
-  margin: 0 0 1rem;
-  font-weight: 600;
-}
-
-h1 {
-  font-size: 2em;
-  line-height: 1.5;
-}
-
-p {
-  margin: 0 0 1.25em;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  margin: 1.5em 0 0;
-}
-
-li:first-child {
-  margin-top: 0;
-}
-
 .view {
   @include padding(1.75em, 3.5em);
 }
 
-.show {
-  display: block;
+.form-list {
+  margin: 0 0 .5em;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 1.5em 0 0;
+  }
+
+  li:first-child {
+    margin-top: 0;
+  }
+}
+
+.bid-ask {
+  margin-right: .5em;
+}
+
+.bid-check {
+  display: inline-block;
+  margin-bottom: .5em;
+}
+
+.scoreboard-container {
+  overflow: scroll;
 }
 
 .hide {
   display: none;
-}
-
-a {
-  color: $orange;
-  font-weight: 600;
-  text-decoration: none;
-
-  &:visited {
-    color: desaturate($orange, 15%);
-  }
-
-  &:hover {
-    text-decoration: underline;
-    color: lighten($orange, 5%);
-  }
-
-  &:active {
-    color: darken($orange, 5%);
-  }
-
-}
-strong {
-  font-weight: 600;
 }
 
 .no-js .no-js {
@@ -108,43 +65,4 @@ strong {
   display: none;
 }
 
-th, td {
-  padding: .5em 1em;
-  text-align: right;
-  border: 1px solid $offwhite;
-}
-
-th {
-  font-weight: normal;
-  color: #fff;
-  background: $skyblue;
-}
-
-td {
-
-  &:empty {
-    background: none;
-    border: none;
-  }
-}
-
 @import 'jquery-ui.scss';
-/*
-.btn {
-  border-radius: .33em;
-  color: #fff;
-  padding: .5em 1em .6em;
-  font-size: 90%;
-  border: none;
-  background: $orange;
-
-  &:hover {
-    background: lighten($orange, 5%);
-  }
-
-  &:active {
-    color: darken(#fff, 5%);
-    background: darken($orange, 5%);
-  }  
-}
-*/

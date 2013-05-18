@@ -33,8 +33,6 @@ Ohs =
     @game = 
       players: []
       settings: {}    
-    #@game = []
-    #@game.settings = {}
     return
 
   bindNewGame: ->
@@ -51,7 +49,12 @@ Ohs =
       # Reset the views and variables.
       Ohs.game = 
         players: []
-        settings: {} 
+        settings: {}
+      Ohs.$numPlayersSection.addClass 'hide'
+      $('#scoringForm')
+        .addClass('hide')
+        .nextAll()
+          .remove()
 
     Ohs.$numPlayersSection
       .slideDown()
@@ -204,6 +207,7 @@ Ohs =
 
     scores.handNum = scores.players[0].hands.length
     scores.prevHand = @previousHands
+
     @$container.append @$scoreBoardTemplate(scores)
     @setButtons()
     
@@ -213,15 +217,16 @@ Ohs =
           .on('click', 'button', Ohs.playNextHand)
           .find('tbody')
             .append(scores.prevHand)
-            .end()
+      
+      # This assignement has to be made during the callback.            
+      Ohs.previousHands = $('tbody').html()
+
+      $(@)
+        .next()      
           .slideDown()
           .removeClass('hide')
           .end()
         .remove()
-
-    @previousHands = $('tbody').html()
-    #console.log @previousHands
-    return
 
   playNextHand: ->
     Ohs.renderBiddingForm()

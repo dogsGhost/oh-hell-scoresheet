@@ -112,6 +112,8 @@
           players: [],
           settings: {}
         };
+        Ohs.$numPlayersSection.addClass('hide');
+        $('#scoringForm').addClass('hide').nextAll().remove();
       }
       return Ohs.$numPlayersSection.slideDown().removeClass('hide');
     },
@@ -281,10 +283,11 @@
       scores.prevHand = this.previousHands;
       this.$container.append(this.$scoreBoardTemplate(scores));
       this.setButtons();
-      $('#correctBidsForm').slideUp(600, function() {
-        return $(this).next().on('click', 'button', Ohs.playNextHand).find('tbody').append(scores.prevHand).end().slideDown().removeClass('hide').end().remove();
+      return $('#correctBidsForm').slideUp(600, function() {
+        $(this).next().on('click', 'button', Ohs.playNextHand).find('tbody').append(scores.prevHand);
+        Ohs.previousHands = $('tbody').html();
+        return $(this).next().slideDown().removeClass('hide').end().remove();
       });
-      this.previousHands = $('tbody').html();
     },
     playNextHand: function() {
       Ohs.renderBiddingForm();

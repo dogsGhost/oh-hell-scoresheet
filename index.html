@@ -44,9 +44,9 @@
             <p>Which hand sequence would you like to use?</p>
             <div class="js-radioset">
               <input type="radio" name="handSequence" id="radio1" value="0" checked>
-              <label for="radio1">Start at 1 card each.</label>
+              <label for="radio1">Start at 1 card each</label>
               <input type="radio" name="handSequence" id="radio2" value="1">
-              <label for="radio2">Start at max number of cards.</label>
+              <label for="radio2">Start at max number of cards</label>
             </div>
           </li>
           <li>
@@ -88,7 +88,7 @@
       <ul class="form-list">
         {{#each players}}
         <li>
-          <label for="player{{@index}}">How many tricks does {{name}} bid?</label>
+          <label for="player{{@index}}" class="bid-ask">How many tricks does {{name}} bid?</label>
           <select id="player{{@index}}" name="{{name}}">
             {{#each ../count}}
             <option>{{this}}</option>
@@ -111,7 +111,7 @@
       <h2>How&apos;d you do?</h2>
       <ul class="form-list">
         {{#each players}}
-        <li>Did {{name}} win {{bid}}?
+        <li><span class="bid-check">Did {{name}} win {{bid}}?</span>
           <div class="js-radioset">
             <input type="radio" name="{{name}}" id="radio-yes{{@index}}" value="correct" checked><label for="radio-yes{{@index}}">Yes</label>
             <input type="radio" name="{{name}}" id="radio-no{{@index}}" value="incorrect"><label for="radio-no{{@index}}">No</label>
@@ -125,7 +125,7 @@
 
   <script type="text/x-handlebars-template" id="scoreBoardTemplate">
     <div class="view hide">
-      <div>
+      <div class="scoreboard-container">
       <table>
         <thead>
           <tr>

@@ -1,19 +1,24 @@
 
+///////////////
+// VARIABLES //
+///////////////
+
 // Colors
 $skyblue: rgb(114, 214, 214);
 $orange: rgb(202, 87, 33);
 $offwhite: #ecf0f1;
 
-
-
 // Typography
-
 $base-font-size: 1em;
-
 $base-line-height: 1.5;
-
 $max-width: 48em;
 
+
+////////////
+// MIXINS //
+////////////
+
+// Keeping left/right padding proportional.
 @mixin padding($top, $sides, $bottom: $top) {
   @if $bottom == $top {
     padding: $top percentage($sides/$max-width);
@@ -21,4 +26,19 @@ $max-width: 48em;
   @else {
     padding: $top percentage($sides/$max-width) $bottom;
   }
+}
+
+// Media queries.
+@mixin mq($maxValue, $minValue: 0) {
+  @if $minValue == 0 {
+    @media (max-width: $maxValue) { @content; }
+  } @else {
+    @media (min-width: $minValue) and (max-width: $maxValue) { @content; }
+  }
+}
+
+// Basic transition.
+@mixin transition($duration: 0, $timing: ease) {
+  -webkit-transition: $duration all $timing;
+          transition: $duration all $timing;
 }
