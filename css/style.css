@@ -404,141 +404,1550 @@ body {
   font: 1em/1.5 "Open Sans", Helvetica, Arial, sans-serif;
   color: #222;
   background-color: #72d6d6;
-  background-image: linear-gradient(#ecf0f1 1px, transparent 1px);
   background-size: 100% 1.5em;
+  background-position: 0 0.75em;
 }
 
-/* line 20, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 21, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .page-wrap {
   margin: 1.5em auto 0;
   max-width: 48em;
+  background: #fff;
   background: white;
   border-radius: 0.33333em;
 }
 
-/* line 27, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 29, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .page-header {
-  padding: 0.75em 7.29167% 1.25em;
-  border-bottom: 2px solid #ca5721;
-  padding-bottom: 1.25em;
+  padding: 0.75em 7.29167% 1.5em;
+  position: relative;
+  border-bottom: 1px dashed #ca5721;
 }
 
-/* line 33, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 35, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .page-footer {
-  padding: 1.5em 7.29167%;
-  border-top: 2px solid #ca5721;
+  padding: 1em 7.29167% 1.25em;
+  border-top: 1px dashed #ca5721;
 }
 
-/* line 38, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 40, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 h1, h2, h3 {
   margin: 0 0 1rem;
   font-weight: 600;
 }
 
-/* line 43, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 45, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 h1 {
   font-size: 2em;
   line-height: 1.5;
 }
 
-/* line 48, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 50, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 p {
   margin: 0 0 1.25em;
 }
 
-/* line 52, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 54, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* line 58, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 60, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 li {
   margin: 1.5em 0 0;
 }
 
-/* line 62, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 64, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 li:first-child {
   margin-top: 0;
 }
 
-/* line 66, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 68, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .view {
   padding: 1.75em 7.29167%;
 }
 
-/* line 70, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 72, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .show {
   display: block;
 }
 
-/* line 74, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 76, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 .hide {
   display: none;
 }
 
-/* line 78, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
-label {
-  cursor: pointer;
-}
-
-/* line 82, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 80, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 a {
   color: #ca5721;
   font-weight: 600;
   text-decoration: none;
 }
-/* line 87, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 85, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 a:visited {
   color: #b85d33;
 }
-/* line 91, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 89, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 a:hover {
   text-decoration: underline;
   color: #dc6229;
 }
-/* line 96, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 94, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 a:active {
   color: #b44e1d;
 }
 
-/* line 101, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 99, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 strong {
   font-weight: 600;
 }
 
-/* line 105, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
-.next {
-  margin-top: 1.5em;
-}
-
-/* line 109, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
-.no-js .browser-alert {
+/* line 103, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+.no-js .no-js {
   display: block;
 }
 
-/* line 113, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
-.js .browser-alert {
+/* line 107, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+.js .no-js {
   display: none;
 }
 
-/* line 117, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 111, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 th, td {
   padding: 0.5em 1em;
   text-align: right;
   border: 1px solid #ecf0f1;
 }
 
-/* line 123, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 117, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 th {
   font-weight: normal;
   color: #fff;
   background: #72d6d6;
 }
 
-/* line 131, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
+/* line 125, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/style.scss */
 td:empty {
   background: none;
   border: none;
 }
+
+/* jQuery UI - v1.10.3 - 2013-05-09
+* http://jqueryui.com
+* Includes: jquery.ui.core.css, jquery.ui.button.css
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Gill%20Sans%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.2em&cornerRadius=4px&bgColorHeader=35414f&bgTextureHeader=dots_small&bgImgOpacityHeader=35&borderColorHeader=2c4359&fcHeader=e1e463&iconColorHeader=e1e463&bgColorContent=ffffff&bgTextureContent=flat&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=2c4359&iconColorContent=c02669&bgColorDefault=93c3cd&bgTextureDefault=diagonals_small&bgImgOpacityDefault=50&borderColorDefault=93c3cd&fcDefault=333333&iconColorDefault=ffffff&bgColorHover=ccd232&bgTextureHover=diagonals_small&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=db4865&bgTextureActive=diagonals_small&bgImgOpacityActive=40&borderColorActive=ff6b7f&fcActive=ffffff&iconColorActive=ffffff&bgColorHighlight=ffff38&bgTextureHighlight=dots_medium&bgImgOpacityHighlight=80&borderColorHighlight=b4d100&fcHighlight=363636&iconColorHighlight=88a206&bgColorError=ff3853&bgTextureError=diagonals_small&bgImgOpacityError=50&borderColorError=ff6b7f&fcError=ffffff&iconColorError=ffeb33&bgColorOverlay=f7f7ba&bgTextureOverlay=white_lines&bgImgOpacityOverlay=85&opacityOverlay=80&bgColorShadow=ba9217&bgTextureShadow=flat&bgImgOpacityShadow=75&opacityShadow=20&thicknessShadow=10px&offsetTopShadow=8px&offsetLeftShadow=8px&cornerRadiusShadow=5px
+* Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
+/* Layout helpers
+----------------------------------*/
+/* line 9, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-hidden {
+  display: none;
+}
+
+/* line 12, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* line 22, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  line-height: 1.3;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+
+/* line 33, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+  content: "";
+  display: table;
+  border-collapse: collapse;
+}
+
+/* line 38, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-clearfix:after {
+  clear: both;
+}
+
+/* line 41, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-clearfix {
+  min-height: 0;
+  /* support: IE7 */
+}
+
+/* line 44, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-helper-zfix {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+  filter: Alpha(Opacity=0);
+}
+
+/* line 54, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-front {
+  z-index: 100;
+}
+
+/* Interaction Cues
+----------------------------------*/
+/* line 61, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-disabled {
+  cursor: default !important;
+}
+
+/* Icons
+----------------------------------*/
+/* states and images */
+/* line 70, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon {
+  display: block;
+  text-indent: -99999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+}
+
+/* Misc visuals
+----------------------------------*/
+/* Overlays */
+/* line 82, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 89, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button {
+  display: inline-block;
+  position: relative;
+  padding: 0;
+  line-height: normal;
+  margin-right: .1em;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  overflow: visible;
+  /* removes extra width in IE */
+}
+
+/* line 104, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button,
+.ui-button:link,
+.ui-button:visited,
+.ui-button:hover,
+.ui-button:active {
+  text-decoration: none;
+}
+
+/* to make room for the icon, a width needs to be set here */
+/* line 108, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-icon-only {
+  width: 2.2em;
+}
+
+/* button elements seem to need a little more width */
+/* line 112, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+button.ui-button-icon-only {
+  width: 2.4em;
+}
+
+/* line 115, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-icons-only {
+  width: 3.4em;
+}
+
+/* line 118, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+button.ui-button-icons-only {
+  width: 3.7em;
+}
+
+/* button text element */
+/* line 123, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button .ui-button-text {
+  display: block;
+  line-height: normal;
+}
+
+/* line 127, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-only .ui-button-text {
+  padding: 0.4em 1em;
+}
+
+/* line 131, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-icon-only .ui-button-text,
+.ui-button-icons-only .ui-button-text {
+  padding: .4em;
+  text-indent: -9999999px;
+}
+
+/* line 136, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-icon-primary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+  padding: 0.4em 1em 0.4em 2.1em;
+}
+
+/* line 140, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-icon-secondary .ui-button-text,
+.ui-button-text-icons .ui-button-text {
+  padding: 0.4em 2.1em 0.4em 1em;
+}
+
+/* line 143, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-icons .ui-button-text {
+  padding-left: 2.1em;
+  padding-right: 2.1em;
+}
+
+/* no icon support for input elements, provide padding by default */
+/* line 148, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+input.ui-button {
+  padding: 0.4em 1em;
+}
+
+/* button icon element(s) */
+/* line 157, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-icon-only .ui-icon,
+.ui-button-text-icon-primary .ui-icon,
+.ui-button-text-icon-secondary .ui-icon,
+.ui-button-text-icons .ui-icon,
+.ui-button-icons-only .ui-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+}
+
+/* line 162, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-icon-only .ui-icon {
+  left: 50%;
+  margin-left: -8px;
+}
+
+/* line 168, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-icon-primary .ui-button-icon-primary,
+.ui-button-text-icons .ui-button-icon-primary,
+.ui-button-icons-only .ui-button-icon-primary {
+  left: .5em;
+}
+
+/* line 173, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-button-text-icon-secondary .ui-button-icon-secondary,
+.ui-button-text-icons .ui-button-icon-secondary,
+.ui-button-icons-only .ui-button-icon-secondary {
+  right: .5em;
+}
+
+/* button sets */
+/* line 178, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-buttonset {
+  margin-right: 7px;
+}
+
+/* line 181, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-buttonset .ui-button {
+  margin-left: 0;
+  margin-right: -.3em;
+}
+
+/* workarounds */
+/* reset extra padding in Firefox, see h5bp.com/l */
+/* line 189, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+input.ui-button::-moz-focus-inner,
+button.ui-button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/* Component containers
+----------------------------------*/
+/* line 196, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget {
+  font-family: Gill Sans, Arial, sans-serif;
+  font-size: 1.2em;
+}
+
+/* line 200, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget .ui-widget {
+  font-size: 1em;
+}
+
+/* line 206, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+  font-family: Gill Sans, Arial, sans-serif;
+  font-size: 1em;
+}
+
+/* line 210, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-content {
+  border: 1px solid #aaaaaa;
+  background: white url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+  color: #2c4359;
+}
+
+/* line 215, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-content a {
+  color: #2c4359;
+}
+
+/* line 218, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-header {
+  border: 1px solid #2c4359;
+  background: #35414f url(images/ui-bg_dots-small_35_35414f_2x2.png) 50% 50% repeat;
+  color: #e1e463;
+  font-weight: bold;
+}
+
+/* line 224, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-header a {
+  color: #e1e463;
+}
+
+/* Interaction states
+----------------------------------*/
+/* line 232, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  border: 1px solid #93c3cd;
+  background: #93c3cd url(images/ui-bg_diagonals-small_50_93c3cd_40x40.png) 50% 50% repeat;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* line 240, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* line 249, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+  border: 1px solid #999999;
+  background: #ccd232 url(images/ui-bg_diagonals-small_75_ccd232_40x40.png) 50% 50% repeat;
+  font-weight: bold;
+  color: #212121;
+}
+
+/* line 258, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+  color: #212121;
+  text-decoration: none;
+}
+
+/* line 264, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+  border: 1px solid #ff6b7f;
+  background: #db4865 url(images/ui-bg_diagonals-small_40_db4865_40x40.png) 50% 50% repeat;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* line 272, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+/* line 281, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+  border: 1px solid #b4d100;
+  background: #ffff38 url(images/ui-bg_dots-medium_80_ffff38_4x4.png) 50% 50% repeat;
+  color: #363636;
+}
+
+/* line 288, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+  color: #363636;
+}
+
+/* line 293, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+  border: 1px solid #ff6b7f;
+  background: #ff3853 url(images/ui-bg_diagonals-small_50_ff3853_40x40.png) 50% 50% repeat;
+  color: #ffffff;
+}
+
+/* line 300, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+  color: #ffffff;
+}
+
+/* line 305, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+  color: #ffffff;
+}
+
+/* line 310, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+  font-weight: bold;
+}
+
+/* line 315, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+  opacity: .7;
+  filter: Alpha(Opacity=70);
+  font-weight: normal;
+}
+
+/* line 322, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+  opacity: .35;
+  filter: Alpha(Opacity=35);
+  background-image: none;
+}
+
+/* line 327, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-disabled .ui-icon {
+  filter: Alpha(Opacity=35);
+  /* For IE8 - See #6059 */
+}
+
+/* Icons
+----------------------------------*/
+/* states and images */
+/* line 335, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* line 340, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon,
+.ui-widget-content .ui-icon {
+  background-image: url(images/ui-icons_c02669_256x240.png);
+}
+
+/* line 343, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-header .ui-icon {
+  background-image: url(images/ui-icons_e1e463_256x240.png);
+}
+
+/* line 346, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-default .ui-icon {
+  background-image: url(images/ui-icons_ffffff_256x240.png);
+}
+
+/* line 350, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+  background-image: url(images/ui-icons_454545_256x240.png);
+}
+
+/* line 353, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-active .ui-icon {
+  background-image: url(images/ui-icons_ffffff_256x240.png);
+}
+
+/* line 356, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-highlight .ui-icon {
+  background-image: url(images/ui-icons_88a206_256x240.png);
+}
+
+/* line 360, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+  background-image: url(images/ui-icons_ffeb33_256x240.png);
+}
+
+/* positioning */
+/* line 365, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-blank {
+  background-position: 16px 16px;
+}
+
+/* line 366, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-n {
+  background-position: 0 0;
+}
+
+/* line 367, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-ne {
+  background-position: -16px 0;
+}
+
+/* line 368, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-e {
+  background-position: -32px 0;
+}
+
+/* line 369, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-se {
+  background-position: -48px 0;
+}
+
+/* line 370, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-s {
+  background-position: -64px 0;
+}
+
+/* line 371, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-sw {
+  background-position: -80px 0;
+}
+
+/* line 372, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-w {
+  background-position: -96px 0;
+}
+
+/* line 373, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-1-nw {
+  background-position: -112px 0;
+}
+
+/* line 374, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-2-n-s {
+  background-position: -128px 0;
+}
+
+/* line 375, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-carat-2-e-w {
+  background-position: -144px 0;
+}
+
+/* line 376, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-n {
+  background-position: 0 -16px;
+}
+
+/* line 377, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-ne {
+  background-position: -16px -16px;
+}
+
+/* line 378, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-e {
+  background-position: -32px -16px;
+}
+
+/* line 379, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-se {
+  background-position: -48px -16px;
+}
+
+/* line 380, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-s {
+  background-position: -64px -16px;
+}
+
+/* line 381, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-sw {
+  background-position: -80px -16px;
+}
+
+/* line 382, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-w {
+  background-position: -96px -16px;
+}
+
+/* line 383, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-1-nw {
+  background-position: -112px -16px;
+}
+
+/* line 384, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-2-n-s {
+  background-position: -128px -16px;
+}
+
+/* line 385, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-triangle-2-e-w {
+  background-position: -144px -16px;
+}
+
+/* line 386, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-n {
+  background-position: 0 -32px;
+}
+
+/* line 387, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-ne {
+  background-position: -16px -32px;
+}
+
+/* line 388, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-e {
+  background-position: -32px -32px;
+}
+
+/* line 389, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-se {
+  background-position: -48px -32px;
+}
+
+/* line 390, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-s {
+  background-position: -64px -32px;
+}
+
+/* line 391, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-sw {
+  background-position: -80px -32px;
+}
+
+/* line 392, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-w {
+  background-position: -96px -32px;
+}
+
+/* line 393, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-1-nw {
+  background-position: -112px -32px;
+}
+
+/* line 394, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-2-n-s {
+  background-position: -128px -32px;
+}
+
+/* line 395, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-2-ne-sw {
+  background-position: -144px -32px;
+}
+
+/* line 396, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-2-e-w {
+  background-position: -160px -32px;
+}
+
+/* line 397, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-2-se-nw {
+  background-position: -176px -32px;
+}
+
+/* line 398, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowstop-1-n {
+  background-position: -192px -32px;
+}
+
+/* line 399, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowstop-1-e {
+  background-position: -208px -32px;
+}
+
+/* line 400, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowstop-1-s {
+  background-position: -224px -32px;
+}
+
+/* line 401, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowstop-1-w {
+  background-position: -240px -32px;
+}
+
+/* line 402, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-n {
+  background-position: 0 -48px;
+}
+
+/* line 403, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-ne {
+  background-position: -16px -48px;
+}
+
+/* line 404, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-e {
+  background-position: -32px -48px;
+}
+
+/* line 405, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-se {
+  background-position: -48px -48px;
+}
+
+/* line 406, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-s {
+  background-position: -64px -48px;
+}
+
+/* line 407, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-sw {
+  background-position: -80px -48px;
+}
+
+/* line 408, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-w {
+  background-position: -96px -48px;
+}
+
+/* line 409, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-1-nw {
+  background-position: -112px -48px;
+}
+
+/* line 410, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-2-n-s {
+  background-position: -128px -48px;
+}
+
+/* line 411, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-2-ne-sw {
+  background-position: -144px -48px;
+}
+
+/* line 412, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-2-e-w {
+  background-position: -160px -48px;
+}
+
+/* line 413, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthick-2-se-nw {
+  background-position: -176px -48px;
+}
+
+/* line 414, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthickstop-1-n {
+  background-position: -192px -48px;
+}
+
+/* line 415, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthickstop-1-e {
+  background-position: -208px -48px;
+}
+
+/* line 416, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthickstop-1-s {
+  background-position: -224px -48px;
+}
+
+/* line 417, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowthickstop-1-w {
+  background-position: -240px -48px;
+}
+
+/* line 418, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturnthick-1-w {
+  background-position: 0 -64px;
+}
+
+/* line 419, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturnthick-1-n {
+  background-position: -16px -64px;
+}
+
+/* line 420, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturnthick-1-e {
+  background-position: -32px -64px;
+}
+
+/* line 421, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturnthick-1-s {
+  background-position: -48px -64px;
+}
+
+/* line 422, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturn-1-w {
+  background-position: -64px -64px;
+}
+
+/* line 423, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturn-1-n {
+  background-position: -80px -64px;
+}
+
+/* line 424, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturn-1-e {
+  background-position: -96px -64px;
+}
+
+/* line 425, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowreturn-1-s {
+  background-position: -112px -64px;
+}
+
+/* line 426, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowrefresh-1-w {
+  background-position: -128px -64px;
+}
+
+/* line 427, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowrefresh-1-n {
+  background-position: -144px -64px;
+}
+
+/* line 428, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowrefresh-1-e {
+  background-position: -160px -64px;
+}
+
+/* line 429, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrowrefresh-1-s {
+  background-position: -176px -64px;
+}
+
+/* line 430, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-4 {
+  background-position: 0 -80px;
+}
+
+/* line 431, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-arrow-4-diag {
+  background-position: -16px -80px;
+}
+
+/* line 432, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-extlink {
+  background-position: -32px -80px;
+}
+
+/* line 433, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-newwin {
+  background-position: -48px -80px;
+}
+
+/* line 434, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-refresh {
+  background-position: -64px -80px;
+}
+
+/* line 435, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-shuffle {
+  background-position: -80px -80px;
+}
+
+/* line 436, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-transfer-e-w {
+  background-position: -96px -80px;
+}
+
+/* line 437, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-transferthick-e-w {
+  background-position: -112px -80px;
+}
+
+/* line 438, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-folder-collapsed {
+  background-position: 0 -96px;
+}
+
+/* line 439, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-folder-open {
+  background-position: -16px -96px;
+}
+
+/* line 440, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-document {
+  background-position: -32px -96px;
+}
+
+/* line 441, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-document-b {
+  background-position: -48px -96px;
+}
+
+/* line 442, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-note {
+  background-position: -64px -96px;
+}
+
+/* line 443, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-mail-closed {
+  background-position: -80px -96px;
+}
+
+/* line 444, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-mail-open {
+  background-position: -96px -96px;
+}
+
+/* line 445, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-suitcase {
+  background-position: -112px -96px;
+}
+
+/* line 446, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-comment {
+  background-position: -128px -96px;
+}
+
+/* line 447, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-person {
+  background-position: -144px -96px;
+}
+
+/* line 448, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-print {
+  background-position: -160px -96px;
+}
+
+/* line 449, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-trash {
+  background-position: -176px -96px;
+}
+
+/* line 450, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-locked {
+  background-position: -192px -96px;
+}
+
+/* line 451, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-unlocked {
+  background-position: -208px -96px;
+}
+
+/* line 452, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-bookmark {
+  background-position: -224px -96px;
+}
+
+/* line 453, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-tag {
+  background-position: -240px -96px;
+}
+
+/* line 454, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-home {
+  background-position: 0 -112px;
+}
+
+/* line 455, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-flag {
+  background-position: -16px -112px;
+}
+
+/* line 456, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-calendar {
+  background-position: -32px -112px;
+}
+
+/* line 457, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-cart {
+  background-position: -48px -112px;
+}
+
+/* line 458, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-pencil {
+  background-position: -64px -112px;
+}
+
+/* line 459, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-clock {
+  background-position: -80px -112px;
+}
+
+/* line 460, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-disk {
+  background-position: -96px -112px;
+}
+
+/* line 461, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-calculator {
+  background-position: -112px -112px;
+}
+
+/* line 462, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-zoomin {
+  background-position: -128px -112px;
+}
+
+/* line 463, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-zoomout {
+  background-position: -144px -112px;
+}
+
+/* line 464, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-search {
+  background-position: -160px -112px;
+}
+
+/* line 465, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-wrench {
+  background-position: -176px -112px;
+}
+
+/* line 466, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-gear {
+  background-position: -192px -112px;
+}
+
+/* line 467, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-heart {
+  background-position: -208px -112px;
+}
+
+/* line 468, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-star {
+  background-position: -224px -112px;
+}
+
+/* line 469, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-link {
+  background-position: -240px -112px;
+}
+
+/* line 470, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-cancel {
+  background-position: 0 -128px;
+}
+
+/* line 471, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-plus {
+  background-position: -16px -128px;
+}
+
+/* line 472, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-plusthick {
+  background-position: -32px -128px;
+}
+
+/* line 473, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-minus {
+  background-position: -48px -128px;
+}
+
+/* line 474, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-minusthick {
+  background-position: -64px -128px;
+}
+
+/* line 475, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-close {
+  background-position: -80px -128px;
+}
+
+/* line 476, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-closethick {
+  background-position: -96px -128px;
+}
+
+/* line 477, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-key {
+  background-position: -112px -128px;
+}
+
+/* line 478, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-lightbulb {
+  background-position: -128px -128px;
+}
+
+/* line 479, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-scissors {
+  background-position: -144px -128px;
+}
+
+/* line 480, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-clipboard {
+  background-position: -160px -128px;
+}
+
+/* line 481, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-copy {
+  background-position: -176px -128px;
+}
+
+/* line 482, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-contact {
+  background-position: -192px -128px;
+}
+
+/* line 483, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-image {
+  background-position: -208px -128px;
+}
+
+/* line 484, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-video {
+  background-position: -224px -128px;
+}
+
+/* line 485, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-script {
+  background-position: -240px -128px;
+}
+
+/* line 486, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-alert {
+  background-position: 0 -144px;
+}
+
+/* line 487, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-info {
+  background-position: -16px -144px;
+}
+
+/* line 488, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-notice {
+  background-position: -32px -144px;
+}
+
+/* line 489, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-help {
+  background-position: -48px -144px;
+}
+
+/* line 490, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-check {
+  background-position: -64px -144px;
+}
+
+/* line 491, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-bullet {
+  background-position: -80px -144px;
+}
+
+/* line 492, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-radio-on {
+  background-position: -96px -144px;
+}
+
+/* line 493, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-radio-off {
+  background-position: -112px -144px;
+}
+
+/* line 494, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-pin-w {
+  background-position: -128px -144px;
+}
+
+/* line 495, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-pin-s {
+  background-position: -144px -144px;
+}
+
+/* line 496, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-play {
+  background-position: 0 -160px;
+}
+
+/* line 497, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-pause {
+  background-position: -16px -160px;
+}
+
+/* line 498, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-seek-next {
+  background-position: -32px -160px;
+}
+
+/* line 499, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-seek-prev {
+  background-position: -48px -160px;
+}
+
+/* line 500, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-seek-end {
+  background-position: -64px -160px;
+}
+
+/* line 501, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-seek-start {
+  background-position: -80px -160px;
+}
+
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+/* line 503, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-seek-first {
+  background-position: -80px -160px;
+}
+
+/* line 504, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-stop {
+  background-position: -96px -160px;
+}
+
+/* line 505, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-eject {
+  background-position: -112px -160px;
+}
+
+/* line 506, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-volume-off {
+  background-position: -128px -160px;
+}
+
+/* line 507, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-volume-on {
+  background-position: -144px -160px;
+}
+
+/* line 508, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-power {
+  background-position: 0 -176px;
+}
+
+/* line 509, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-signal-diag {
+  background-position: -16px -176px;
+}
+
+/* line 510, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-signal {
+  background-position: -32px -176px;
+}
+
+/* line 511, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-battery-0 {
+  background-position: -48px -176px;
+}
+
+/* line 512, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-battery-1 {
+  background-position: -64px -176px;
+}
+
+/* line 513, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-battery-2 {
+  background-position: -80px -176px;
+}
+
+/* line 514, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-battery-3 {
+  background-position: -96px -176px;
+}
+
+/* line 515, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-plus {
+  background-position: 0 -192px;
+}
+
+/* line 516, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-minus {
+  background-position: -16px -192px;
+}
+
+/* line 517, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-close {
+  background-position: -32px -192px;
+}
+
+/* line 518, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-triangle-e {
+  background-position: -48px -192px;
+}
+
+/* line 519, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-triangle-s {
+  background-position: -64px -192px;
+}
+
+/* line 520, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-triangle-w {
+  background-position: -80px -192px;
+}
+
+/* line 521, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-triangle-n {
+  background-position: -96px -192px;
+}
+
+/* line 522, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-arrow-e {
+  background-position: -112px -192px;
+}
+
+/* line 523, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-arrow-s {
+  background-position: -128px -192px;
+}
+
+/* line 524, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-arrow-w {
+  background-position: -144px -192px;
+}
+
+/* line 525, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-arrow-n {
+  background-position: -160px -192px;
+}
+
+/* line 526, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-zoomin {
+  background-position: -176px -192px;
+}
+
+/* line 527, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-zoomout {
+  background-position: -192px -192px;
+}
+
+/* line 528, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circle-check {
+  background-position: -208px -192px;
+}
+
+/* line 529, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circlesmall-plus {
+  background-position: 0 -208px;
+}
+
+/* line 530, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circlesmall-minus {
+  background-position: -16px -208px;
+}
+
+/* line 531, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-circlesmall-close {
+  background-position: -32px -208px;
+}
+
+/* line 532, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-squaresmall-plus {
+  background-position: -48px -208px;
+}
+
+/* line 533, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-squaresmall-minus {
+  background-position: -64px -208px;
+}
+
+/* line 534, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-squaresmall-close {
+  background-position: -80px -208px;
+}
+
+/* line 535, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-grip-dotted-vertical {
+  background-position: 0 -224px;
+}
+
+/* line 536, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-grip-dotted-horizontal {
+  background-position: -16px -224px;
+}
+
+/* line 537, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-grip-solid-vertical {
+  background-position: -32px -224px;
+}
+
+/* line 538, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-grip-solid-horizontal {
+  background-position: -48px -224px;
+}
+
+/* line 539, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-gripsmall-diagonal-se {
+  background-position: -64px -224px;
+}
+
+/* line 540, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-icon-grip-diagonal-se {
+  background-position: -80px -224px;
+}
+
+/* Misc visuals
+----------------------------------*/
+/* Corner radius */
+/* line 550, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  border-top-left-radius: 4px;
+}
+
+/* line 556, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  border-top-right-radius: 4px;
+}
+
+/* line 562, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+  border-bottom-left-radius: 4px;
+}
+
+/* line 568, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+  border-bottom-right-radius: 4px;
+}
+
+/* Overlays */
+/* line 573, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-overlay {
+  background: #f7f7ba url(images/ui-bg_white-lines_85_f7f7ba_40x100.png) 50% 50% repeat;
+  opacity: .8;
+  filter: Alpha(Opacity=80);
+}
+
+/* line 578, /Applications/MAMP/htdocs/side-projects/oh-hell-scoresheet/sass/_jquery-ui.scss */
+.ui-widget-shadow {
+  margin: 8px 0 0 8px;
+  padding: 10px;
+  background: #ba9217 url(images/ui-bg_flat_75_ba9217_40x100.png) 50% 50% repeat-x;
+  opacity: .2;
+  filter: Alpha(Opacity=20);
+  border-radius: 5px;
+}
+
+/*
+.btn {
+  border-radius: .33em;
+  color: #fff;
+  padding: .5em 1em .6em;
+  font-size: 90%;
+  border: none;
+  background: $orange;
+
+  &:hover {
+    background: lighten($orange, 5%);
+  }
+
+  &:active {
+    color: darken(#fff, 5%);
+    background: darken($orange, 5%);
+  }  
+}
+*/

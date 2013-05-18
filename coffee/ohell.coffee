@@ -4,17 +4,20 @@
 * game of Oh Hell.
 * Dependencies: jQuery, jQueryUI, Handlebars
 * @author David Wilhelm
-* @version 2.3.10
+* @version 2.3.18
 ###
 
 Ohs =
   init: ->
-    @cacheVariables()
-    @bindNewGame()
     # Add trim method for IE8 support.
     Utils.trimCheck()
+    @setButtons()
+    @cacheVariables()
+    @bindNewGame()
+
+  setButtons: ->
     $('button').button()
-    #$('#radios').buttonset()
+    $('.js-radioset').buttonset()
 
   cacheVariables: ->
     @$namesFormTemplate = Handlebars.compile $('#namesFormTemplate').html()
@@ -25,15 +28,18 @@ Ohs =
     @$newGameBtn = $ '#newGameBtn'
     @$container = $ '#container'
     @$numPlayersSection = $ '#numPlayersSection'
-    
+    @previousHands = ''
     @gameStarted = false
-    @game = []
-    @settings = {}
+    @game = 
+      players: []
+      settings: {}    
+    #@game = []
+    #@game.settings = {}
     return
 
   bindNewGame: ->
     @$newGameBtn.on 'click', @startNewGame
-    @$numPlayersSection.find('button').on 'click', @setNumPlayers
+    @$numPlayersSection.on 'click', 'button', @setNumPlayers
 
   startNewGame: ->
     # Check if this is the first game played.
@@ -42,20 +48,21 @@ Ohs =
     if not Ohs.gameStarted
       Ohs.gameStarted = true
     else
-      # do stuff
-      Ohs.game = []
-      Ohs.settings = {}
+      # Reset the views and variables.
+      Ohs.game = 
+        players: []
+        settings: {} 
 
     Ohs.$numPlayersSection
       .slideDown()
       .removeClass 'hide'
 
   setNumPlayers: ->
-    Ohs.settings.numPlayers = parseInt $('#numPlayers').val(), 10
+    Ohs.game.settings.numPlayers = parseInt $('#numPlayersSection input:checked').val(), 10
     
     # Number of players indicates maximum number of cards a player can be dealt.
-    p = Ohs.settings.numPlayers
-    Ohs.settings.maxNumCards = if p <= 5 then 10 else Math.floor(52 / p)    
+    p = Ohs.game.settings.numPlayers
+    Ohs.game.settings.maxNumCards = if p <= 5 then 10 else Math.floor(52 / p)    
     Ohs.renderNamesForm()
 
   renderNamesForm: ->
@@ -63,15 +70,13 @@ Ohs =
 
     # Create object to pass to template.    
     players = 
-      count: num for num in [1..@settings.numPlayers]
+      count: num for num in [1..@game.settings.numPlayers]
 
     # Create template html and add to page.
     @$container.append @$namesFormTemplate(players)
-    $('#nameForm')    
+    @setButtons()
+    $('#namesForm')    
       .on('submit', @setPlayerNames)
-      .find('button')
-        .button()
-        .end()
       .slideDown()
       .removeClass('hide')
 
@@ -82,12 +87,12 @@ Ohs =
     # Set default name if none given, then add player to the game.
     for name, index in names
       if not name.value then name.value = "Player #{index + 1}"
-      Ohs.game.push new Player name.value.trim()
+      Ohs.game.players.push new Player name.value.trim()
     
     $(@).slideUp 400, -> $(@).remove()
-    Ohs.renderScoringForm()
+    Ohs.showScoringForm()
 
-  renderScoringForm: ->
+  showScoringForm: ->
     $('#scoringForm')
       .on('submit', @setScoringParams)
       .slideDown()
@@ -100,54 +105,50 @@ Ohs =
     
     # params[0] = starting hand size
     if parseInt(params[0].value, 10) is 0
-      h = (num for num in [1..Ohs.settings.maxNumCards])
-      h.push num for num in [(Ohs.settings.maxNumCards - 1)..1]
+      h = (num for num in [1..Ohs.game.settings.maxNumCards])
+      h.push num for num in [(Ohs.game.settings.maxNumCards - 1)..1]
     else
-      h = (num for num in [Ohs.settings.maxNumCards..1])
-      h.push num for num in [2..Ohs.settings.maxNumCards]
-    Ohs.settings.handSizeOrder = h
+      h = (num for num in [Ohs.game.settings.maxNumCards..1])
+      h.push num for num in [2..Ohs.game.settings.maxNumCards]
+    Ohs.game.settings.handSizeOrder = h
 
     # params[1] = trick point value - defaults to 1
     trickVal = parseInt params[1].value, 10
-    Ohs.settings.trickValue = if trickVal then trickVal else 1
+    Ohs.game.settings.trickValue = if trickVal then trickVal else 1
 
     # params[2] = correct bid point value - defaults to 5
     bidVal = parseInt params[2].value, 10
-    Ohs.settings.correctBidValue = if bidVal then bidVal else 5
+    Ohs.game.settings.correctBidValue = if bidVal then bidVal else 5
 
     $(@).slideUp(400, -> $(@).addClass('hide'))
     Ohs.renderBiddingForm()
 
   renderBiddingForm: () ->
     # Create object to pass to template.
-    data =
-      players: @game
-      handNum: @game[0].hands.length + 1
-    
-    data.numCards = @settings.handSizeOrder[data.handNum - 1]
+    data = @game
+      
+    data.handNum = data.players[0].hands.length + 1    
+    data.numCards = data.settings.handSizeOrder[data.handNum - 1]
     data.count = (num for num in [0..data.numCards])
     data.numCards += if data.numCards > 1 then ' cards' else ' card'
     
     # Render template on the page. Assign next view's handler.
     @$container.append @$biddingFormTemplate(data)
+    @setButtons()
     $('#biddingForm')
       .on('submit', @setPlayerBids)
-      .find('button')
-        .button()
-        .end()
       .slideDown()
       .removeClass('hide')
       .next()
-        .find('button')
-          .button()
-          .on 'click', @renderCorrectBidsForm
+        .on 'click', 'button', @renderCorrectBidsForm
 
   setPlayerBids: (e) ->
     e.preventDefault()
 
     # Assign the bids to their respective player.
     bids = $(@).serializeArray()
-    for player in Ohs.game
+
+    for player in Ohs.game.players
       for bid in bids
         player.hands.push(new Hand bid.value) if player.name is bid.name
     
@@ -155,9 +156,6 @@ Ohs =
     $(@).slideUp 300, ->
       $(@)
         .next()
-          .find('button')
-            .button()
-            .end()
           .slideDown()
           .removeClass('hide')
           .end()
@@ -168,8 +166,8 @@ Ohs =
     data =
       players: []
 
-    i = Ohs.game[0].hands.length - 1
-    for player in Ohs.game
+    i = Ohs.game.players[0].hands.length - 1
+    for player in Ohs.game.players
       p =
         name: player.name
         bid: player.hands[i].bid
@@ -178,13 +176,11 @@ Ohs =
 
     # Change the view.
     Ohs.$container.append Ohs.$correctBidsFormTemplate(data)
+    Ohs.setButtons()
     $(@).parent().slideUp 400, -> $(@).remove()
     
     $('#correctBidsForm')
       .on('submit', Ohs.calcBids)
-      .find('button')
-        .button()
-        .end()
       .slideDown()
       .removeClass 'hide'
 
@@ -193,8 +189,8 @@ Ohs =
 
     # Update results of hand just played.
     results = $(@).serializeArray()
-    hand =  Ohs.game[0].hands.length - 1
-    for player in Ohs.game
+    hand = Ohs.game.players[0].hands.length - 1
+    for player in Ohs.game.players
       for result in results
         if result.name is player.name
           player.hands[hand].scoreHand(result.value)
@@ -204,25 +200,31 @@ Ohs =
     Ohs.renderScoreBoard()
 
   renderScoreBoard: ->
-    scores =
-      players: @game
+    scores = @game
 
-    # Loop through all the hands and add allthe scores to the total hand
-    
-
+    scores.handNum = scores.players[0].hands.length
+    scores.prevHand = @previousHands
     @$container.append @$scoreBoardTemplate(scores)
-    #
-
+    @setButtons()
+    
     $('#correctBidsForm').slideUp 600, ->
       $(@)
         .next()
+          .on('click', 'button', Ohs.playNextHand)
+          .find('tbody')
+            .append(scores.prevHand)
+            .end()
           .slideDown()
           .removeClass('hide')
-          .find('button')
-            .button()
-            .on('click', @renderBiddingForm)
-            .end()
           .end()
         .remove()
+
+    @previousHands = $('tbody').html()
+    #console.log @previousHands
+    return
+
+  playNextHand: ->
+    Ohs.renderBiddingForm()
+    $(@).parent().slideUp 400, -> $(@).remove()
 
 Ohs.init()

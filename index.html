@@ -9,50 +9,45 @@
   <script src="js/modernizr.min.js"></script>
 </head>
 <body>
-	<p class="browser-alert">You must enable javascript to use this application.</p>
+	<p class="no-js browser-alert">You must enable javascript to use this application.</p>
   <div class="page-wrap">
   	<header class="page-header" role="banner">
   		<h1>Oh Hell! Scoresheet</h1>
   		<a href="http://www.pagat.com/exact/ohhell.html" target="_blank" title="external link">read the rules</a>
       <p><em>Caution!</em> Do not close this window or your scoring will be lost!</p>
-      <button id="newGameBtn" class="btn btn--new-game">New Game</button>
+      <button id="newGameBtn">New Game</button>
     </header>
     <section id="container" class="container" role="main">
       
       <div id="numPlayersSection" class="view hide">
         <div>
-          <label for="numPlayers">How many players are there?</label>
-          <select id="numPlayers" name="numPlayers">
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-          </select>
-          <!-- <div id="radios">
-            <input type="radio" name="1handSequence" id="q1" value="0" checked>
-            <label for="q1">3</label>
-            <input type="radio" name="1handSequence" id="q2" value="0" >
-            <label for="q2">4</label>
-            <input type="radio" name="1handSequence" id="q3" value="0" >
-            <label for="q3">5</label>
-            <input type="radio" name="1handSequence" id="q4" value="0" >
-            <label for="q4">6</label>
-            <input type="radio" name="1handSequence" id="q5" value="0" >
-            <label for="q5">7</label>
-          </div> -->
+          <p>How many players are there?</p>
+          <div class="js-radioset">
+            <input type="radio" name="numPlayers" id="np-r1" value="3" checked>
+            <label for="np-r1">3</label>
+            <input type="radio" name="numPlayers" id="np-r2" value="4">
+            <label for="np-r2">4</label>
+            <input type="radio" name="numPlayers" id="np-r3" value="5">
+            <label for="np-r3">5</label>
+            <input type="radio" name="numPlayers" id="np-r4" value="6">
+            <label for="np-r4">6</label>
+            <input type="radio" name="numPlayers" id="np-r5" value="7">
+            <label for="np-r5">7</label>
+          </div>
         </div>
-        <button class="btn next">Next</button>
+        <button>Next</button>
       </div><!-- /numPlayersSection -->
 
       <form id="scoringForm" class="view hide" role="form">
         <ul class="form-list">
           <li>
             <p>Which hand sequence would you like to use?</p>
-            <input type="radio" name="handSequence" id="radio1" value="0" checked>
-            <label for="radio1">Start at 1 card each.</label>
-            <input type="radio" name="handSequence" id="radio2" value="1">
-            <label for="radio2">Start at max number of cards.</label>
+            <div class="js-radioset">
+              <input type="radio" name="handSequence" id="radio1" value="0" checked>
+              <label for="radio1">Start at 1 card each.</label>
+              <input type="radio" name="handSequence" id="radio2" value="1">
+              <label for="radio2">Start at max number of cards.</label>
+            </div>
           </li>
           <li>
             <label for="trickValue">How many points is a trick worth? (default 1)</label>
@@ -63,7 +58,7 @@
             <input type="text" size="8" class="field" name="correctBidValue" id="correctBidValue" placeholder="5">
           </li>
         </ul>
-        <button type="submit" class="btn next">Next</button>
+        <button type="submit">Next</button>
       </form><!-- /scoringForm -->
       
     </section><!-- /container -->
@@ -74,7 +69,7 @@
   </div><!-- /page-wrap -->
 
   <script type="text/x-handlebars-template" id="namesFormTemplate">
-    <form id="nameForm" class="view hide" role="form">
+    <form id="namesForm" class="view hide" role="form">
       <ul class="form-list">
         {{#each count}}
         <li>
@@ -83,7 +78,7 @@
         </li>
         {{/each}} 
       </ul>
-      <button type="submit" class="btn next">Next</button>
+      <button type="submit">Next</button>
     </form>
   </script>
 
@@ -102,11 +97,12 @@
         </li>
         {{/each}}
       </ul>
-      <button type="submit" class="btn">Submit Bids</button>
+      <button type="submit">Submit Bids</button>
     </form>
+
     <div class="view hide">
     <h2>Play the hand!</h2>
-    <button class="btn">Done!</button>
+    <button>Done!</button>
     </div>
   </script>
 
@@ -116,21 +112,20 @@
       <ul class="form-list">
         {{#each players}}
         <li>Did {{name}} win {{bid}}?
-        <input type="radio" name="{{name}}" id="radio-yes{{@index}}" value="correct" checked><label for="radio-yes{{@index}}">Yes</label>
-        <input type="radio" name="{{name}}" id="radio-no{{@index}}" value="incorrect"><label for="radio-no{{@index}}">No</label>
+          <div class="js-radioset">
+            <input type="radio" name="{{name}}" id="radio-yes{{@index}}" value="correct" checked><label for="radio-yes{{@index}}">Yes</label>
+            <input type="radio" name="{{name}}" id="radio-no{{@index}}" value="incorrect"><label for="radio-no{{@index}}">No</label>
+          </div>
         </li>
         {{/each}}
       </ul>
-      <button type="submit" class="btn">View Score</button>
+      <button type="submit">View Score</button>
     </form>
   </script>
 
   <script type="text/x-handlebars-template" id="scoreBoardTemplate">
     <div class="view hide">
-      {{#if winner}}
-      <p>{{winner}}</p>
-      {{/if}}
-      <div style="overflox-x: scroll;">
+      <div>
       <table>
         <thead>
           <tr>
@@ -142,7 +137,7 @@
         </thead>
         <tbody>
           <tr>
-            <th>Hand 1</th>
+            <th>Hand {{handNum}}</th>
             {{#each players}}
             <td>{{totalScore}}</td>
             {{/each}}
@@ -151,7 +146,7 @@
       </table>
       </div>
 
-      <button class="btn next">Play Next Hand</button>
+      <button>Play Next Hand</button>
     </div>
   </script>
 

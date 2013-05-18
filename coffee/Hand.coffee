@@ -7,5 +7,5 @@ class Hand
     if guess is 'correct'
       @correctBid = true
       @pointsEarned = 
-        @bid * Ohs.settings.trickValue + Ohs.settings.correctBidValue
+        @bid * Ohs.game.settings.trickValue + Ohs.game.settings.correctBidValue
     return

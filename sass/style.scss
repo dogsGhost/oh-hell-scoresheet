@@ -13,26 +13,28 @@ body {
   font: #{$base-font-size}/#{$base-line-height} 'Open Sans', Helvetica, Arial, sans-serif;
   color: #222;
   background-color: $skyblue; 
-  background-image: linear-gradient($offwhite 1px, transparent 1px);
+  //background-image: linear-gradient($offwhite 1px, transparent 1px);
   background-size: 100% 1.5em;
+  background-position: 0 .75em;
 }
 
 .page-wrap {
   margin: 1.5em auto 0;
   max-width: $max-width;
+  background: #fff;
   background: rgba(#fff, 1);
   border-radius: $base-font-size/3;
 }
 
 .page-header {
-  @include padding(.75em, 3.5em, 1.25em);
-  border-bottom: 2px solid $orange;
-  padding-bottom: 1.25em;
+  @include padding(.75em, 3.5em, 1.5em);
+  position: relative;
+  border-bottom: 1px dashed $orange;
 }
 
 .page-footer {
-  @include padding(1.5em, 3.5em);
-  border-top: 2px solid $orange;
+  @include padding(1em, 3.5em, 1.25em);
+  border-top: 1px dashed $orange;
 }
 
 h1, h2, h3 {
@@ -75,10 +77,6 @@ li:first-child {
   display: none;
 }
 
-label {
-  cursor: pointer;
-}
-
 a {
   color: $orange;
   font-weight: 600;
@@ -102,15 +100,11 @@ strong {
   font-weight: 600;
 }
 
-.next {
-  margin-top: 1.5em;
-}
-
-.no-js .browser-alert {
+.no-js .no-js {
   display: block;
 }
 
-.js .browser-alert {
+.js .no-js {
   display: none;
 }
 
@@ -134,4 +128,23 @@ td {
   }
 }
 
-//@import 'jquery-ui.scss';
+@import 'jquery-ui.scss';
+/*
+.btn {
+  border-radius: .33em;
+  color: #fff;
+  padding: .5em 1em .6em;
+  font-size: 90%;
+  border: none;
+  background: $orange;
+
+  &:hover {
+    background: lighten($orange, 5%);
+  }
+
+  &:active {
+    color: darken(#fff, 5%);
+    background: darken($orange, 5%);
+  }  
+}
+*/

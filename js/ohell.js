@@ -31,7 +31,7 @@
     Hand.prototype.scoreHand = function(guess) {
       if (guess === 'correct') {
         this.correctBid = true;
-        this.pointsEarned = this.bid * Ohs.settings.trickValue + Ohs.settings.correctBidValue;
+        this.pointsEarned = this.bid * Ohs.game.settings.trickValue + Ohs.game.settings.correctBidValue;
       }
     };
 
@@ -70,16 +70,20 @@
   * game of Oh Hell.
   * Dependencies: jQuery, jQueryUI, Handlebars
   * @author David Wilhelm
-  * @version 2.3.10
+  * @version 2.3.18
   */
 
 
   Ohs = {
     init: function() {
-      this.cacheVariables();
-      this.bindNewGame();
       Utils.trimCheck();
-      return $('button').button();
+      this.setButtons();
+      this.cacheVariables();
+      return this.bindNewGame();
+    },
+    setButtons: function() {
+      $('button').button();
+      return $('.js-radioset').buttonset();
     },
     cacheVariables: function() {
       this.$namesFormTemplate = Handlebars.compile($('#namesFormTemplate').html());
@@ -89,28 +93,33 @@
       this.$newGameBtn = $('#newGameBtn');
       this.$container = $('#container');
       this.$numPlayersSection = $('#numPlayersSection');
+      this.previousHands = '';
       this.gameStarted = false;
-      this.game = [];
-      this.settings = {};
+      this.game = {
+        players: [],
+        settings: {}
+      };
     },
     bindNewGame: function() {
       this.$newGameBtn.on('click', this.startNewGame);
-      return this.$numPlayersSection.find('button').on('click', this.setNumPlayers);
+      return this.$numPlayersSection.on('click', 'button', this.setNumPlayers);
     },
     startNewGame: function() {
       if (!Ohs.gameStarted) {
         Ohs.gameStarted = true;
       } else {
-        Ohs.game = [];
-        Ohs.settings = {};
+        Ohs.game = {
+          players: [],
+          settings: {}
+        };
       }
       return Ohs.$numPlayersSection.slideDown().removeClass('hide');
     },
     setNumPlayers: function() {
       var p;
-      Ohs.settings.numPlayers = parseInt($('#numPlayers').val(), 10);
-      p = Ohs.settings.numPlayers;
-      Ohs.settings.maxNumCards = p <= 5 ? 10 : Math.floor(52 / p);
+      Ohs.game.settings.numPlayers = parseInt($('#numPlayersSection input:checked').val(), 10);
+      p = Ohs.game.settings.numPlayers;
+      Ohs.game.settings.maxNumCards = p <= 5 ? 10 : Math.floor(52 / p);
       return Ohs.renderNamesForm();
     },
     renderNamesForm: function() {
@@ -120,14 +129,15 @@
         count: (function() {
           var _i, _ref, _results;
           _results = [];
-          for (num = _i = 1, _ref = this.settings.numPlayers; 1 <= _ref ? _i <= _ref : _i >= _ref; num = 1 <= _ref ? ++_i : --_i) {
+          for (num = _i = 1, _ref = this.game.settings.numPlayers; 1 <= _ref ? _i <= _ref : _i >= _ref; num = 1 <= _ref ? ++_i : --_i) {
             _results.push(num);
           }
           return _results;
         }).call(this)
       };
       this.$container.append(this.$namesFormTemplate(players));
-      return $('#nameForm').on('submit', this.setPlayerNames).find('button').button().end().slideDown().removeClass('hide');
+      this.setButtons();
+      return $('#namesForm').on('submit', this.setPlayerNames).slideDown().removeClass('hide');
     },
     setPlayerNames: function(e) {
       var index, name, names, _i, _len;
@@ -138,14 +148,14 @@
         if (!name.value) {
           name.value = "Player " + (index + 1);
         }
-        Ohs.game.push(new Player(name.value.trim()));
+        Ohs.game.players.push(new Player(name.value.trim()));
       }
       $(this).slideUp(400, function() {
         return $(this).remove();
       });
-      return Ohs.renderScoringForm();
+      return Ohs.showScoringForm();
     },
-    renderScoringForm: function() {
+    showScoringForm: function() {
       return $('#scoringForm').on('submit', this.setScoringParams).slideDown().removeClass('hide');
     },
     setScoringParams: function(e) {
@@ -156,32 +166,32 @@
         h = (function() {
           var _i, _ref, _results;
           _results = [];
-          for (num = _i = 1, _ref = Ohs.settings.maxNumCards; 1 <= _ref ? _i <= _ref : _i >= _ref; num = 1 <= _ref ? ++_i : --_i) {
+          for (num = _i = 1, _ref = Ohs.game.settings.maxNumCards; 1 <= _ref ? _i <= _ref : _i >= _ref; num = 1 <= _ref ? ++_i : --_i) {
             _results.push(num);
           }
           return _results;
         })();
-        for (num = _i = _ref = Ohs.settings.maxNumCards - 1; _ref <= 1 ? _i <= 1 : _i >= 1; num = _ref <= 1 ? ++_i : --_i) {
+        for (num = _i = _ref = Ohs.game.settings.maxNumCards - 1; _ref <= 1 ? _i <= 1 : _i >= 1; num = _ref <= 1 ? ++_i : --_i) {
           h.push(num);
         }
       } else {
         h = (function() {
           var _j, _ref1, _results;
           _results = [];
-          for (num = _j = _ref1 = Ohs.settings.maxNumCards; _ref1 <= 1 ? _j <= 1 : _j >= 1; num = _ref1 <= 1 ? ++_j : --_j) {
+          for (num = _j = _ref1 = Ohs.game.settings.maxNumCards; _ref1 <= 1 ? _j <= 1 : _j >= 1; num = _ref1 <= 1 ? ++_j : --_j) {
             _results.push(num);
           }
           return _results;
         })();
-        for (num = _j = 2, _ref1 = Ohs.settings.maxNumCards; 2 <= _ref1 ? _j <= _ref1 : _j >= _ref1; num = 2 <= _ref1 ? ++_j : --_j) {
+        for (num = _j = 2, _ref1 = Ohs.game.settings.maxNumCards; 2 <= _ref1 ? _j <= _ref1 : _j >= _ref1; num = 2 <= _ref1 ? ++_j : --_j) {
           h.push(num);
         }
       }
-      Ohs.settings.handSizeOrder = h;
+      Ohs.game.settings.handSizeOrder = h;
       trickVal = parseInt(params[1].value, 10);
-      Ohs.settings.trickValue = trickVal ? trickVal : 1;
+      Ohs.game.settings.trickValue = trickVal ? trickVal : 1;
       bidVal = parseInt(params[2].value, 10);
-      Ohs.settings.correctBidValue = bidVal ? bidVal : 5;
+      Ohs.game.settings.correctBidValue = bidVal ? bidVal : 5;
       $(this).slideUp(400, function() {
         return $(this).addClass('hide');
       });
@@ -189,11 +199,9 @@
     },
     renderBiddingForm: function() {
       var data, num;
-      data = {
-        players: this.game,
-        handNum: this.game[0].hands.length + 1
-      };
-      data.numCards = this.settings.handSizeOrder[data.handNum - 1];
+      data = this.game;
+      data.handNum = data.players[0].hands.length + 1;
+      data.numCards = data.settings.handSizeOrder[data.handNum - 1];
       data.count = (function() {
         var _i, _ref, _results;
         _results = [];
@@ -204,13 +212,14 @@
       })();
       data.numCards += data.numCards > 1 ? ' cards' : ' card';
       this.$container.append(this.$biddingFormTemplate(data));
-      return $('#biddingForm').on('submit', this.setPlayerBids).find('button').button().end().slideDown().removeClass('hide').next().find('button').button().on('click', this.renderCorrectBidsForm);
+      this.setButtons();
+      return $('#biddingForm').on('submit', this.setPlayerBids).slideDown().removeClass('hide').next().on('click', 'button', this.renderCorrectBidsForm);
     },
     setPlayerBids: function(e) {
       var bid, bids, player, _i, _j, _len, _len1, _ref;
       e.preventDefault();
       bids = $(this).serializeArray();
-      _ref = Ohs.game;
+      _ref = Ohs.game.players;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         player = _ref[_i];
         for (_j = 0, _len1 = bids.length; _j < _len1; _j++) {
@@ -221,7 +230,7 @@
         }
       }
       return $(this).slideUp(300, function() {
-        return $(this).next().find('button').button().end().slideDown().removeClass('hide').end().remove();
+        return $(this).next().slideDown().removeClass('hide').end().remove();
       });
     },
     renderCorrectBidsForm: function() {
@@ -229,8 +238,8 @@
       data = {
         players: []
       };
-      i = Ohs.game[0].hands.length - 1;
-      _ref = Ohs.game;
+      i = Ohs.game.players[0].hands.length - 1;
+      _ref = Ohs.game.players;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         player = _ref[_i];
         p = {
@@ -241,17 +250,18 @@
         data.players.push(p);
       }
       Ohs.$container.append(Ohs.$correctBidsFormTemplate(data));
+      Ohs.setButtons();
       $(this).parent().slideUp(400, function() {
         return $(this).remove();
       });
-      return $('#correctBidsForm').on('submit', Ohs.calcBids).find('button').button().end().slideDown().removeClass('hide');
+      return $('#correctBidsForm').on('submit', Ohs.calcBids).slideDown().removeClass('hide');
     },
     calcBids: function(e) {
       var hand, player, result, results, _i, _j, _len, _len1, _ref;
       e.preventDefault();
       results = $(this).serializeArray();
-      hand = Ohs.game[0].hands.length - 1;
-      _ref = Ohs.game;
+      hand = Ohs.game.players[0].hands.length - 1;
+      _ref = Ohs.game.players;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         player = _ref[_i];
         for (_j = 0, _len1 = results.length; _j < _len1; _j++) {
@@ -266,12 +276,20 @@
     },
     renderScoreBoard: function() {
       var scores;
-      scores = {
-        players: this.game
-      };
+      scores = this.game;
+      scores.handNum = scores.players[0].hands.length;
+      scores.prevHand = this.previousHands;
       this.$container.append(this.$scoreBoardTemplate(scores));
-      return $('#correctBidsForm').slideUp(600, function() {
-        return $(this).next().slideDown().removeClass('hide').find('button').button().on('click', this.renderBiddingForm).end().end().remove();
+      this.setButtons();
+      $('#correctBidsForm').slideUp(600, function() {
+        return $(this).next().on('click', 'button', Ohs.playNextHand).find('tbody').append(scores.prevHand).end().slideDown().removeClass('hide').end().remove();
+      });
+      this.previousHands = $('tbody').html();
+    },
+    playNextHand: function() {
+      Ohs.renderBiddingForm();
+      return $(this).parent().slideUp(400, function() {
+        return $(this).remove();
       });
     }
   };
