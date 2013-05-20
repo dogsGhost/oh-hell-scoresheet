@@ -1,10 +1,10 @@
-###
+###*
 * @fileOverview Handles all functionality for executing the Oh Hell Scoresheet
 * web application that allows the user to track the scores of everyone during a
 * game of Oh Hell.
 * Dependencies: jQuery, jQueryUI, Handlebars
 * @author David Wilhelm
-* @version 2.3.18
+* @version 2.3.20
 ###
 
 Ohs =
@@ -55,10 +55,8 @@ Ohs =
         .addClass('hide')
         .nextAll()
           .remove()
-
-    Ohs.$numPlayersSection
-      .slideDown()
-      .removeClass 'hide'
+        
+    Ohs.$numPlayersSection.removeClass 'hide'
 
   setNumPlayers: ->
     Ohs.game.settings.numPlayers = parseInt $('#numPlayersSection input:checked').val(), 10
@@ -69,7 +67,7 @@ Ohs =
     Ohs.renderNamesForm()
 
   renderNamesForm: ->
-    @$numPlayersSection.slideUp().addClass('hide')
+    @$numPlayersSection.addClass 'hide'
 
     # Create object to pass to template.    
     players = 
@@ -80,7 +78,6 @@ Ohs =
     @setButtons()
     $('#namesForm')    
       .on('submit', @setPlayerNames)
-      .slideDown()
       .removeClass('hide')
 
   setPlayerNames: (e) ->
@@ -92,14 +89,16 @@ Ohs =
       if not name.value then name.value = "Player #{index + 1}"
       Ohs.game.players.push new Player name.value.trim()
     
-    $(@).slideUp 400, -> $(@).remove()
+    
+    $(@)
+      .on('transitionend', -> $(@).remove())
+      .addClass 'hide'
     Ohs.showScoringForm()
 
   showScoringForm: ->
     $('#scoringForm')
       .on('submit', @setScoringParams)
-      .slideDown()
-      .removeClass('hide')
+      .removeClass 'hide'
 
   setScoringParams: (e) ->
     e.preventDefault()
@@ -123,7 +122,7 @@ Ohs =
     bidVal = parseInt params[2].value, 10
     Ohs.game.settings.correctBidValue = if bidVal then bidVal else 5
 
-    $(@).slideUp(400, -> $(@).addClass('hide'))
+    $(@).addClass 'hide'
     Ohs.renderBiddingForm()
 
   renderBiddingForm: () ->
@@ -140,7 +139,6 @@ Ohs =
     @setButtons()
     $('#biddingForm')
       .on('submit', @setPlayerBids)
-      .slideDown()
       .removeClass('hide')
       .next()
         .on 'click', 'button', @renderCorrectBidsForm
@@ -155,14 +153,13 @@ Ohs =
       for bid in bids
         player.hands.push(new Hand bid.value) if player.name is bid.name
     
-    #
-    $(@).slideUp 300, ->
-      $(@)
-        .next()
-          .slideDown()
-          .removeClass('hide')
-          .end()
-        .remove()
+    # Show next view.
+    $(@)
+      .on('transitionend', -> $(@).remove())
+      .addClass('hide')
+      .next()
+        .removeClass('hide')
+        .end()
 
   renderCorrectBidsForm: ->
     # Create object to pass to template.
@@ -180,11 +177,13 @@ Ohs =
     # Change the view.
     Ohs.$container.append Ohs.$correctBidsFormTemplate(data)
     Ohs.setButtons()
-    $(@).parent().slideUp 400, -> $(@).remove()
+    $(@)
+      .parent()
+        .on('transitionend', -> $(@).remove())
+        .addClass 'hide'
     
     $('#correctBidsForm')
       .on('submit', Ohs.calcBids)
-      .slideDown()
       .removeClass 'hide'
 
   calcBids: (e) ->
@@ -204,32 +203,44 @@ Ohs =
 
   renderScoreBoard: ->
     scores = @game
-
     scores.handNum = scores.players[0].hands.length
     scores.prevHand = @previousHands
 
+    # Find who has highest current score.
+    leadScore = 0
+    for player in scores.players
+      leadScore = if player.totalScore >= leadScore then player.totalScore else leadScore
+
+    for player in scores.players
+      if player.totalScore is leadScore
+        player.winning = true
+    
+    # Add scoreboard html to page.
     @$container.append @$scoreBoardTemplate(scores)
     @setButtons()
     
-    $('#correctBidsForm').slideUp 600, ->
-      $(@)
-        .next()
-          .on('click', 'button', Ohs.playNextHand)
-          .find('tbody')
-            .append(scores.prevHand)
-      
-      # This assignement has to be made during the callback.            
-      Ohs.previousHands = $('tbody').html()
-
-      $(@)
-        .next()      
-          .slideDown()
-          .removeClass('hide')
+    # Show scoreboard.
+    $('#correctBidsForm')
+      .on('transitionend', -> $(@).remove())
+      .next()
+        .on('click', 'button', Ohs.playNextHand)
+        .find('tbody')
+          .append(scores.prevHand)
           .end()
-        .remove()
+        .removeClass('hide')
+        .end()
+      .addClass 'hide'
+
+    # Assign tbody content so it can be appended next scoring round.
+    @previousHands = $('tbody').html()
+    return
 
   playNextHand: ->
+    # Start next hand of game.
+    $(@)
+      .parent()
+        .on('transitionend', -> $(@).remove())
+        .addClass 'hide'
     Ohs.renderBiddingForm()
-    $(@).parent().slideUp 400, -> $(@).remove()
 
 Ohs.init()

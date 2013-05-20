@@ -24,6 +24,7 @@
 
 .view {
   @include padding(1.75em, 3.5em);
+  @include transition(.6s);
 }
 
 .form-list {
@@ -50,11 +51,19 @@
 }
 
 .scoreboard-container {
-  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.winning {
+  font-size: 110%;
+  background: $offwhite;
 }
 
 .hide {
-  display: none;
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
 }
 
 .no-js .no-js {
@@ -66,3 +75,12 @@
 }
 
 @import 'jquery-ui.scss';
+
+.new-game {
+  @include mq(540px) {
+    margin: 0;
+    position: absolute;
+    top: 4em;
+    right: 7.3%;
+  }
+}

@@ -217,7 +217,7 @@ td:empty, th:empty { border: 0; }
 
 th { font-weight: normal; white-space: nowrap; color: #fff; background: #4acbcb; }
 
-select { -webkit-appearance: none; border: 1px solid #ca5721; padding-left: .5em; font-size: 1.25em; }
+select { -webkit-appearance: none; -moz-appearance: none; border: 1px solid #ca5721; padding: 0 0.5em; font-size: 1.25em; }
 
 .page-wrap { margin: 1.5em auto 0; max-width: 48em; background: #fff; background: white; border-radius: 0.33333em; }
 
@@ -225,7 +225,7 @@ select { -webkit-appearance: none; border: 1px solid #ca5721; padding-left: .5em
 
 .page-footer { padding: 1em 7.29167% 1.25em; border-top: 1px dashed #ca5721; }
 
-.view { padding: 1.75em 7.29167%; }
+.view { padding: 1.75em 7.29167%; -webkit-transition: 0.6s all ease; transition: 0.6s all ease; }
 
 .form-list { margin: 0 0 0.5em; padding: 0; list-style: none; }
 .form-list li { margin: 1.5em 0 0; }
@@ -235,9 +235,11 @@ select { -webkit-appearance: none; border: 1px solid #ca5721; padding-left: .5em
 
 .bid-check { display: inline-block; margin-bottom: .5em; }
 
-.scoreboard-container { overflow: scroll; }
+.scoreboard-container { overflow-x: hidden; }
 
-.hide { display: none; }
+.winning { font-size: 110%; background: #ecf0f1; }
+
+.hide { padding: 0; height: 0; overflow: hidden; opacity: 0; }
 
 .no-js .no-js { display: block; }
 
@@ -398,3 +400,5 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner { border: 
 .ui-corner-bottom, .ui-corner-left, .ui-corner-bl { border-bottom-left-radius: .33em; }
 
 .ui-corner-bottom, .ui-corner-right, .ui-corner-br { border-bottom-right-radius: .33em; }
+
+@media (max-width: 540px) { .new-game { margin: 0; position: absolute; top: 4em; right: 7.3%; } }
