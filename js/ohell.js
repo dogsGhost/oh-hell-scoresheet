@@ -46,6 +46,16 @@
 
 
   Utils = {
+    transitionEnd: '',
+    transitionCheck: function() {
+      var el;
+      el = document.getElementById('container');
+      if (el.style.transitionDelay === '') {
+        this.transitionEnd = 'transitionend';
+      } else {
+        this.transitionEnd = 'webkitTransitionEnd';
+      }
+    },
     maxArray: function(array) {
       return Math.max.apply(null, array);
     },
@@ -55,6 +65,11 @@
           return this.replace(/^\s+|\s+$/g, '');
         };
       }
+    },
+    transitionCallback: function($el) {
+      return $el.on(this.transitionEnd, function() {
+        return $el.remove();
+      });
     }
   };
 
@@ -76,14 +91,22 @@
 
   Ohs = {
     init: function() {
-      Utils.trimCheck();
       this.setButtons();
       this.cacheVariables();
-      return this.bindNewGame();
+      this.bindNewGame();
+      return Utils.transitionCheck();
     },
     setButtons: function() {
-      $('button').button();
-      return $('.js-radioset').buttonset();
+      $('button').each(function() {
+        if (!$(this).hasClass('ui-button')) {
+          return $(this).button();
+        }
+      });
+      return $('.js-radioset').each(function() {
+        if (!$(this).hasClass('ui-buttonset')) {
+          return $(this).buttonset();
+        }
+      });
     },
     cacheVariables: function() {
       this.$namesFormTemplate = Handlebars.compile($('#namesFormTemplate').html());
@@ -108,14 +131,17 @@
       if (!Ohs.gameStarted) {
         Ohs.gameStarted = true;
       } else {
-        Ohs.game = {
-          players: [],
-          settings: {}
-        };
-        Ohs.$numPlayersSection.addClass('hide');
-        $('#scoringForm').addClass('hide').nextAll().remove();
+        Ohs.resetGame();
       }
       return Ohs.$numPlayersSection.removeClass('hide');
+    },
+    resetGame: function() {
+      this.game = {
+        players: [],
+        settings: {}
+      };
+      this.$numPlayersSection.addClass('hide');
+      return $('#scoringForm').addClass('hide').nextAll().remove();
     },
     setNumPlayers: function() {
       var p;
@@ -152,9 +178,8 @@
         }
         Ohs.game.players.push(new Player(name.value.trim()));
       }
-      $(this).on('transitionend', function() {
-        return $(this).remove();
-      }).addClass('hide');
+      Utils.transitionCallback($(this));
+      $(this).addClass('hide');
       return Ohs.showScoringForm();
     },
     showScoringForm: function() {
@@ -229,9 +254,8 @@
           }
         }
       }
-      return $(this).on('transitionend', function() {
-        return $(this).remove();
-      }).addClass('hide').next().removeClass('hide').end();
+      Utils.transitionCallback($(this));
+      return $(this).addClass('hide').next().removeClass('hide').end();
     },
     renderCorrectBidsForm: function() {
       var data, i, p, player, _i, _len, _ref;
@@ -251,9 +275,8 @@
       }
       Ohs.$container.append(Ohs.$correctBidsFormTemplate(data));
       Ohs.setButtons();
-      $(this).parent().on('transitionend', function() {
-        return $(this).remove();
-      }).addClass('hide');
+      Utils.transitionCallback($(this).parent());
+      $(this).parent().addClass('hide');
       return $('#correctBidsForm').on('submit', Ohs.calcBids).removeClass('hide');
     },
     calcBids: function(e) {
@@ -294,15 +317,13 @@
       }
       this.$container.append(this.$scoreBoardTemplate(scores));
       this.setButtons();
-      $('#correctBidsForm').on('transitionend', function() {
-        return $(this).remove();
-      }).next().on('click', 'button', Ohs.playNextHand).find('tbody').append(scores.prevHand).end().removeClass('hide').end().addClass('hide');
+      Utils.transitionCallback($('#correctBidsForm'));
+      $('#correctBidsForm').next().on('click', 'button', Ohs.playNextHand).find('tbody').append(scores.prevHand).end().removeClass('hide').end().addClass('hide');
       this.previousHands = $('tbody').html();
     },
     playNextHand: function() {
-      $(this).parent().on('transitionend', function() {
-        return $(this).remove();
-      }).addClass('hide');
+      Utils.transitionCallback($(this).parent());
+      $(this).parent().addClass('hide');
       return Ohs.renderBiddingForm();
     }
   };

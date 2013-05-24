@@ -9,15 +9,16 @@
 
 Ohs =
   init: ->
-    # Add trim method for IE8 support.
-    Utils.trimCheck()
     @setButtons()
     @cacheVariables()
     @bindNewGame()
+    Utils.transitionCheck()
 
   setButtons: ->
-    $('button').button()
-    $('.js-radioset').buttonset()
+    $('button').each ->
+      $(@).button() unless $(@).hasClass 'ui-button'
+    $('.js-radioset').each ->
+      $(@).buttonset() unless $(@).hasClass 'ui-buttonset'
 
   cacheVariables: ->
     @$namesFormTemplate = Handlebars.compile $('#namesFormTemplate').html()
@@ -46,17 +47,20 @@ Ohs =
     if not Ohs.gameStarted
       Ohs.gameStarted = true
     else
-      # Reset the views and variables.
-      Ohs.game = 
-        players: []
-        settings: {}
-      Ohs.$numPlayersSection.addClass 'hide'
-      $('#scoringForm')
-        .addClass('hide')
-        .nextAll()
-          .remove()
+      Ohs.resetGame()
         
     Ohs.$numPlayersSection.removeClass 'hide'
+
+  resetGame: ->
+    # Reset the views and variables.
+    @game = 
+      players: []
+      settings: {}
+    @$numPlayersSection.addClass 'hide'
+    $('#scoringForm')
+      .addClass('hide')
+      .nextAll()
+        .remove()
 
   setNumPlayers: ->
     Ohs.game.settings.numPlayers = parseInt $('#numPlayersSection input:checked').val(), 10
@@ -89,9 +93,8 @@ Ohs =
       if not name.value then name.value = "Player #{index + 1}"
       Ohs.game.players.push new Player name.value.trim()
     
-    
+    Utils.transitionCallback $(@)
     $(@)
-      .on('transitionend', -> $(@).remove())
       .addClass 'hide'
     Ohs.showScoringForm()
 
@@ -153,9 +156,9 @@ Ohs =
       for bid in bids
         player.hands.push(new Hand bid.value) if player.name is bid.name
     
+    Utils.transitionCallback $(@)
     # Show next view.
     $(@)
-      .on('transitionend', -> $(@).remove())
       .addClass('hide')
       .next()
         .removeClass('hide')
@@ -177,9 +180,9 @@ Ohs =
     # Change the view.
     Ohs.$container.append Ohs.$correctBidsFormTemplate(data)
     Ohs.setButtons()
+    Utils.transitionCallback $(@).parent()
     $(@)
       .parent()
-        .on('transitionend', -> $(@).remove())
         .addClass 'hide'
     
     $('#correctBidsForm')
@@ -219,9 +222,9 @@ Ohs =
     @$container.append @$scoreBoardTemplate(scores)
     @setButtons()
     
+    Utils.transitionCallback $('#correctBidsForm')
     # Show scoreboard.
     $('#correctBidsForm')
-      .on('transitionend', -> $(@).remove())
       .next()
         .on('click', 'button', Ohs.playNextHand)
         .find('tbody')
@@ -237,9 +240,9 @@ Ohs =
 
   playNextHand: ->
     # Start next hand of game.
+    Utils.transitionCallback $(@).parent()
     $(@)
       .parent()
-        .on('transitionend', -> $(@).remove())
         .addClass 'hide'
     Ohs.renderBiddingForm()
 
