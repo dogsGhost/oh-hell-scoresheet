@@ -1,12 +1,3 @@
-###*
-* @fileOverview Handles all functionality for executing the Oh Hell Scoresheet
-* web application that allows the user to track the scores of everyone during a
-* game of Oh Hell.
-* Dependencies: jQuery, jQueryUI, Handlebars
-* @author David Wilhelm
-* @version 2.3.20
-###
-
 Ohs =
   init: ->
     @setButtons()
@@ -56,6 +47,7 @@ Ohs =
     @game = 
       players: []
       settings: {}
+    @previousHands = ''      
     @$numPlayersSection.addClass 'hide'
     $('#scoringForm')
       .addClass('hide')
@@ -174,18 +166,23 @@ Ohs =
       p =
         name: player.name
         bid: player.hands[i].bid
-      p.bid += if p.bid is 1 then ' trick' else ' tricks'
+      p.bid += if p.bid is '1' then ' trick' else ' tricks'
       data.players.push p
 
-    # Change the view.
+    # Add form to page.
     Ohs.$container.append Ohs.$correctBidsFormTemplate(data)
     Ohs.setButtons()
+    Ohs.$correctBidsForm = $('#correctBidsForm')
+
+    # Set call back
     Utils.transitionCallback $(@).parent()
+
+    # Change the view.
     $(@)
       .parent()
         .addClass 'hide'
     
-    $('#correctBidsForm')
+    Ohs.$correctBidsForm
       .on('submit', Ohs.calcBids)
       .removeClass 'hide'
 
@@ -210,21 +207,19 @@ Ohs =
     scores.prevHand = @previousHands
 
     # Find who has highest current score.
-    leadScore = 0
-    for player in scores.players
-      leadScore = if player.totalScore >= leadScore then player.totalScore else leadScore
-
+    leadScore = (player.totalScore for player in scores.players)
+    leadScore = Utils.maxArray leadScore
     for player in scores.players
       if player.totalScore is leadScore
         player.winning = true
-    
+
     # Add scoreboard html to page.
     @$container.append @$scoreBoardTemplate(scores)
     @setButtons()
     
-    Utils.transitionCallback $('#correctBidsForm')
+    Utils.transitionCallback Ohs.$correctBidsForm
     # Show scoreboard.
-    $('#correctBidsForm')
+    Ohs.$correctBidsForm
       .next()
         .on('click', 'button', Ohs.playNextHand)
         .find('tbody')
@@ -234,8 +229,10 @@ Ohs =
         .end()
       .addClass 'hide'
 
-    # Assign tbody content so it can be appended next scoring round.
+    # Re-assign some values for next scoring round.
     @previousHands = $('tbody').html()
+    for player in scores.players
+      player.winning = false
     return
 
   playNextHand: ->
