@@ -11,10 +11,10 @@ body {
   background-color: $skyblue; 
   //background-image: linear-gradient($offwhite 1px, transparent 1px);
   background-size: 100% 1.5em;
-  background-position: 0 .75em;
 }
 
 h1, h2, h3 {
+  margin: 0 0 16px;
   margin: 0 0 1rem;
   font-weight: 600;
 }
@@ -22,6 +22,12 @@ h1, h2, h3 {
 h1 {
   font-size: 2em;
   line-height: 1.5;
+}
+
+h2 {
+  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
+  line-height: 1;
 }
 
 p {
@@ -52,7 +58,7 @@ strong {
 }
 
 td {
-  padding: .5em 1em;
+  padding: .5em;
   text-align: right;
   border: 1px solid $offwhite;
 
@@ -66,6 +72,9 @@ th {
   font-weight: normal;
   white-space: nowrap;
   color: #fff;
+}
+
+thead, th {
   background: darken($skyblue, 10%);
 }
 
