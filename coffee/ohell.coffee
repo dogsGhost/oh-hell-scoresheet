@@ -19,6 +19,7 @@ Ohs =
     @$newGameBtn = $ '#newGameBtn'
     @$container = $ '#container'
     @$numPlayersSection = $ '#numPlayersSection'
+    @$scoringForm = $ '#scoringForm'
     @previousHands = ''
     @gameStarted = false
     @game = 
@@ -50,7 +51,7 @@ Ohs =
     @$numPlayersSection
       .addClass('hide')
       .show()
-    $('#scoringForm')
+    @$scoringForm
       .addClass('hide')
       .show()
       .nextAll()
@@ -94,7 +95,7 @@ Ohs =
     Ohs.showScoringForm()
 
   showScoringForm: ->
-    $('#scoringForm')
+    @$scoringForm
       .on('submit', @setScoringParams)
       .removeClass 'hide'
 

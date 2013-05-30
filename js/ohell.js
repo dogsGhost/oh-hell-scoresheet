@@ -125,6 +125,7 @@
       this.$newGameBtn = $('#newGameBtn');
       this.$container = $('#container');
       this.$numPlayersSection = $('#numPlayersSection');
+      this.$scoringForm = $('#scoringForm');
       this.previousHands = '';
       this.gameStarted = false;
       this.game = {
@@ -151,7 +152,7 @@
       };
       this.previousHands = '';
       this.$numPlayersSection.addClass('hide').show();
-      return $('#scoringForm').addClass('hide').show().nextAll().remove();
+      return this.$scoringForm.addClass('hide').show().nextAll().remove();
     },
     setNumPlayers: function() {
       var p;
@@ -195,7 +196,7 @@
       return Ohs.showScoringForm();
     },
     showScoringForm: function() {
-      return $('#scoringForm').on('submit', this.setScoringParams).removeClass('hide');
+      return this.$scoringForm.on('submit', this.setScoringParams).removeClass('hide');
     },
     setScoringParams: function(e) {
       var bidVal, h, num, params, trickVal, _i, _j, _ref, _ref1;
