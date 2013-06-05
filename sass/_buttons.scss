@@ -1,0 +1,14 @@
+@import 'jquery-ui';
+
+.new-game {
+  @include mq(540px) {
+    margin: 0;
+    position: absolute;
+    top: 4em;
+    right: 7.3%;
+  }
+
+  @include mq(340px) {
+    top: 6.5em;
+  }
+}
