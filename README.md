@@ -1,10 +1,10 @@
 Oh Hell! Scoresheet
 ===================
 
-App for tracking player scoring for the card game Oh Hell!
+Web app for tracking player scoring for the card game Oh Hell!
 
-version: 2.0.1
+version: 2.1.1
 
-Currently does not support IE < 10.
+Supported in all modern browsers, IE8, and IE9.
 
-Dependencies: jQuery, jQueryUI, Handlebars
+Dependencies: Handlebars, jQuery, jQuery UI, Modernizr

@@ -3,7 +3,6 @@ Ohs =
     @setButtons()
     @cacheVariables()
     @bindNewGame()
-    Utils.transitionCheck()
 
   setButtons: ->
     $('button').each ->
@@ -20,6 +19,7 @@ Ohs =
     @$newGameBtn = $ '#newGameBtn'
     @$container = $ '#container'
     @$numPlayersSection = $ '#numPlayersSection'
+    @$scoringForm = $ '#scoringForm'
     @previousHands = ''
     @gameStarted = false
     @game = 
@@ -48,14 +48,17 @@ Ohs =
       players: []
       settings: {}
     @previousHands = ''      
-    @$numPlayersSection.addClass 'hide'
-    $('#scoringForm')
+    @$numPlayersSection
       .addClass('hide')
+      .show()
+    @$scoringForm
+      .addClass('hide')
+      .show()
       .nextAll()
         .remove()
 
   setNumPlayers: ->
-    Ohs.game.settings.numPlayers = parseInt $('#numPlayersSection input:checked').val(), 10
+    Ohs.game.settings.numPlayers = parseInt Ohs.$numPlayersSection.find('input:checked').val(), 10
     
     # Number of players indicates maximum number of cards a player can be dealt.
     p = Ohs.game.settings.numPlayers
@@ -63,7 +66,8 @@ Ohs =
     Ohs.renderNamesForm()
 
   renderNamesForm: ->
-    @$numPlayersSection.addClass 'hide'
+    Utils.transitionTrigger @$numPlayersSection
+    Utils.transitionFallback @$numPlayersSection
 
     # Create object to pass to template.    
     players = 
@@ -86,12 +90,12 @@ Ohs =
       Ohs.game.players.push new Player name.value.trim()
     
     Utils.transitionCallback $(@)
-    $(@)
-      .addClass 'hide'
+    Utils.transitionTrigger $(@)
+    Utils.transitionFallback $(@), true
     Ohs.showScoringForm()
 
   showScoringForm: ->
-    $('#scoringForm')
+    @$scoringForm
       .on('submit', @setScoringParams)
       .removeClass 'hide'
 
@@ -117,7 +121,8 @@ Ohs =
     bidVal = parseInt params[2].value, 10
     Ohs.game.settings.correctBidValue = if bidVal then bidVal else 5
 
-    $(@).addClass 'hide'
+    Utils.transitionTrigger $(@)
+    Utils.transitionFallback $(@)    
     Ohs.renderBiddingForm()
 
   renderBiddingForm: () ->
@@ -150,11 +155,11 @@ Ohs =
     
     Utils.transitionCallback $(@)
     # Show next view.
+    Utils.transitionTrigger $(@)
     $(@)
-      .addClass('hide')
       .next()
         .removeClass('hide')
-        .end()
+    Utils.transitionFallback $(@), true       
 
   renderCorrectBidsForm: ->
     # Create object to pass to template.
@@ -178,9 +183,8 @@ Ohs =
     Utils.transitionCallback $(@).parent()
 
     # Change the view.
-    $(@)
-      .parent()
-        .addClass 'hide'
+    Utils.transitionTrigger $(@).parent()
+    Utils.transitionFallback $(@).parent(), true       
     
     Ohs.$correctBidsForm
       .on('submit', Ohs.calcBids)
@@ -218,6 +222,7 @@ Ohs =
     @setButtons()
     
     Utils.transitionCallback Ohs.$correctBidsForm
+    
     # Show scoreboard.
     Ohs.$correctBidsForm
       .next()
@@ -226,8 +231,9 @@ Ohs =
           .append(scores.prevHand)
           .end()
         .removeClass('hide')
-        .end()
-      .addClass 'hide'
+
+    Utils.transitionTrigger Ohs.$correctBidsForm
+    Utils.transitionFallback Ohs.$correctBidsForm, true   
 
     # Re-assign some values for next scoring round.
     @previousHands = $('tbody').html()
@@ -238,9 +244,9 @@ Ohs =
   playNextHand: ->
     # Start next hand of game.
     Utils.transitionCallback $(@).parent()
-    $(@)
-      .parent()
-        .addClass 'hide'
+    Utils.transitionTrigger $(@).parent()
+    Utils.transitionFallback $(@).parent(), true
+
     Ohs.renderBiddingForm()
 
 Ohs.init()

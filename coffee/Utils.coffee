@@ -1,15 +1,18 @@
 Utils =
-  transitionEnd: ''
+  transEndEventNames:
+    # Hash of appropriate transitionend prefixes based on css prefix.
+    'WebkitTransition' : 'webkitTransitionEnd'
+    'MozTransition'    : 'transitionend'
+    'OTransition'      : 'oTransitionEnd'
+    'msTransition'     : 'MSTransitionEnd'
+    'transition'       : 'transitionend'
 
-  transitionCheck: ->
-    # Test for transition support.
-    el = document.getElementById 'container'
-    if el.style.transitionDelay is ''
-      @transitionEnd = 'transitionend'
-      return
-    else if el.style.WebkitTransitionDelay is ''
-      @transitionEnd = 'webkitTransitionEnd'
-      return
+  transEndEventName: ->
+    # Check which prefix to use.
+    if Modernizr.csstransitions
+      @transEndEventNames[Modernizr.prefixed('transition')]
+    else
+      ''
 
   maxArray: (array) ->
     # Find the max value in an array.
@@ -23,13 +26,17 @@ Utils =
     return
 
   transitionCallback: ($el) ->
-    # Removes an element from the page with css transition ends.
-    if @transitionEnd
-      $el.on @transitionEnd, -> $el.remove()
-    else
-      # IE fallback here.
-      # Something like:
-      # $el.slideUp 400, -> $el.remove()
-      # But for now:
-      window.alert 'Sorry, this browser is currently not supported.'
-    
+    # Removes an element from the page when css transition ends.
+    if @transEndEventName()
+      $el.on @transEndEventName(), -> $el.remove()
+
+  transitionTrigger: ($el) ->
+    # This is what starts the transition event.
+    if @transEndEventName()
+      $el.addClass 'hide'
+
+  transitionFallback: ($el, callback) ->
+    # Fallback for non-support of transitionend event.
+    if not @transEndEventName()
+      $el.slideUp 400, -> 
+        $el.remove() if callback
